@@ -261,14 +261,14 @@ export class HeroComponent {
   activeImage = signal(0);
 
   images = [
-    "https://www.figma.com/api/mcp/asset/ea8a8b7d-0d75-4afe-b9a4-7d79b5514dd0",
-    "https://www.figma.com/api/mcp/asset/3c19b543-5fd7-42cf-b8cd-9202d17ff6c8",
-    "https://www.figma.com/api/mcp/asset/920b65d4-ca5f-4bc4-99ab-4a04bc0989f6",
-    "https://www.figma.com/api/mcp/asset/c7a0f978-4d90-4942-afec-3dc00f15c8f4",
-    "https://www.figma.com/api/mcp/asset/dc5c2035-f453-4919-9a24-deacfa9f869c",
-    "https://www.figma.com/api/mcp/asset/8b7061ec-a96a-4d5f-9548-fd48a73e48ce",
-    "https://www.figma.com/api/mcp/asset/dae0ea72-8c88-4950-8c29-a2226bcf0b33",
-    "https://www.figma.com/api/mcp/asset/1cc79636-3837-42c0-aa4b-395d9e055bd3"
+    "assets/images/hero/imagen-hero-1.png",
+    "assets/images/hero/imagen-hero-2.png",
+    "assets/images/hero/imagen-hero-3.png",
+    "assets/images/hero/imagen-hero-4.png",
+    "assets/images/hero/imagen-hero-5.png",
+    "assets/images/hero/imagen-hero-6.png",
+    "assets/images/hero/imagen-hero-7.png",
+    "assets/images/hero/imagen-hero-8.png"
   ];
 
   constructor() {

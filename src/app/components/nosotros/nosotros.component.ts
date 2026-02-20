@@ -18,7 +18,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         <!-- Misión -->
         <div class="nosotros__grid-item">
           <div class="nosotros__image-wrapper">
-            <img src="https://www.figma.com/api/mcp/asset/f0f34d0d-2f4b-4656-ba5f-1db07d276cf3" alt="Misión">
+            <img src="assets/images/about/nosotros-1.png" alt="Misión">
           </div>
           <div class="nosotros__text-content">
             <h3 class="nosotros__subtitle">Misión</h3>
@@ -29,7 +29,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         <!-- Visión -->
         <div class="nosotros__grid-item nosotros__grid-item--reverse">
           <div class="nosotros__image-wrapper">
-            <img src="https://www.figma.com/api/mcp/asset/3e0e86de-ab47-4a7a-90be-e004a435e982" alt="Visión">
+            <img src="assets/images/about/nosotros-2.png" alt="Visión">
           </div>
           <div class="nosotros__text-content">
             <h3 class="nosotros__subtitle">Visión</h3>
@@ -40,7 +40,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         <!-- Objetivos -->
         <div class="nosotros__objetivos">
           <div class="nosotros__objetivos-image">
-            <img src="https://www.figma.com/api/mcp/asset/a381473c-d111-44a8-9919-a0eb5ea754a4" alt="Objetivos">
+            <img src="assets/images/about/nosotros-3.png" alt="Objetivos">
           </div>
           <div class="nosotros__objetivos-content">
             <h3 class="nosotros__subtitle">Objetivos</h3>

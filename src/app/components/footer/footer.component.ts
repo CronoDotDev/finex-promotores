@@ -11,7 +11,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           <!-- Logo & Social -->
           <div class="footer__brand">
             <div class="footer__logo">
-              <img src="https://www.figma.com/api/mcp/asset/0e5a712c-4907-4dd1-ac79-49c6b13f7a98" alt="Finex Logo">
+              <img src="assets/images/layout/logo-footer.png" alt="Finex Logo">
             </div>
             <p class="footer__tagline">Promoción inteligente de oportunidades para mejorar tu hogar.</p>
             <div class="footer__social">

@@ -32,7 +32,7 @@ gsap.registerPlugin(ScrollTrigger);
         </div>
 
         <div class="beneficios__image">
-          <img src="https://www.figma.com/api/mcp/asset/6b0267c5-dead-4df9-bc5a-2d84595b24d7" alt="¿Por qué elegir FINEX?">
+          <img src="assets/images/benefits/porque-elegir.png" alt="¿Por qué elegir FINEX?">
         </div>
       </div>
     </section>
@@ -245,7 +245,7 @@ gsap.registerPlugin(ScrollTrigger);
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BeneficiosComponent {
-  backgroundImage = 'https://www.figma.com/api/mcp/asset/eb23dee4-b7dd-47d3-95ab-1ff9751dcaa2';
+  backgroundImage = 'assets/images/benefits/porque-elegir-background.jpg';
 
   benefits = [
     {

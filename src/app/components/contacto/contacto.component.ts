@@ -23,10 +23,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
           <div class="contacto__images">
             <div class="contacto__image">
-              <img src="https://www.figma.com/api/mcp/asset/3c1cd3bc-bc46-41f5-82b7-fa0c3620b9e6" alt="Asesoría Finex">
+              <img src="assets/images/contact/contacto image-1.jpg" alt="Asesoría Finex">
             </div>
             <div class="contacto__image">
-              <img src="https://www.figma.com/api/mcp/asset/f52d1d15-f070-4417-9940-0c44e400568c" alt="Trato Directo">
+              <img src="assets/images/contact/contacto-imagen-2.jpg" alt="Trato Directo">
             </div>
           </div>
 
@@ -303,5 +303,5 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactoComponent {
-  backgroundImage = 'https://www.figma.com/api/mcp/asset/ad54b711-0dfe-486e-a607-2003f23e4e58';
+  backgroundImage = 'assets/images/contact/contacto-background.jpg';
 }

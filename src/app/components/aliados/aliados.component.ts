@@ -111,10 +111,10 @@ import { gsap } from 'gsap';
 })
 export class AliadosComponent {
   logos = [
-    { name: 'Infonavit', src: 'https://www.figma.com/api/mcp/asset/c3b2c90d-a981-41a0-b7f5-ed326541f800', class: 'logo-infonavit' },
-    { name: 'Mejoravit', src: 'https://www.figma.com/api/mcp/asset/6154a1ed-6b1e-449f-97f7-82dccdbfd65e', class: 'logo-mejoravit' },
-    { name: 'Yayahappy', src: 'https://www.figma.com/api/mcp/asset/70899f3d-ddef-44f7-9c52-da1555595fbd', class: 'logo-yaya' },
-    { name: 'CFE', src: 'https://www.figma.com/api/mcp/asset/02243f2f-69db-4151-97fd-5bfe85502dcc', class: 'logo-cfe' }
+    { name: 'Infonavit', src: 'assets/images/alliances/alliance-logo-infonavit.png', class: 'logo-infonavit' },
+    { name: 'Mejoravit', src: 'assets/images/alliances/alliance-logo-mejoravit.png', class: 'logo-mejoravit' },
+    { name: 'Yayahappy', src: 'assets/images/alliances/alliance-logo-yayahappyshopping.png', class: 'logo-yaya' },
+    { name: 'CFE', src: 'assets/images/alliances/alliance-logo-cfe.png', class: 'logo-cfe' }
   ];
 
   constructor() {

@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-    selector: 'app-cta',
-    template: `
+  selector: 'app-cta',
+  template: `
     <section class="cta">
       <div class="cta__container-wrapper">
         <div class="cta__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
@@ -13,7 +13,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       </div>
     </section>
   `,
-    styles: [`
+  styles: [`
     @use '../../../styles/variables' as vars;
 
     .cta {
@@ -103,8 +103,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       }
     }
   `],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CtaComponent {
-  backgroundImage = 'https://www.figma.com/api/mcp/asset/a317aba7-a7e4-4ec3-b3e3-97b369854227';
+  backgroundImage = 'assets/images/contact/cta.jpg';
 }

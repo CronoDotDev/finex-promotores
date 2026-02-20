@@ -223,19 +223,19 @@ export class TestimonialsComponent {
       name: 'María González',
       location: 'Tampico, Tamps.',
       text: 'Desde el primer contacto sentí claridad y confianza. Me acompañaron en todo el proceso y hoy tengo el crédito que necesitaba para renovar mi vivienda. Totalmente recomendados.',
-      avatar: 'https://www.figma.com/api/mcp/asset/75786ec0-7d7f-4580-b6c8-970f77df35e5'
+      avatar: 'assets/images/testimonials/testimonial-avatar-1.png'
     },
     {
       name: 'Luis Hernández',
       location: 'Reynosa, Tamps.',
       text: 'El equipo de FINEX me explicó cada paso y resolvió todas mis dudas. El proceso fue mucho más sencillo de lo que esperaba.',
-      avatar: 'https://www.figma.com/api/mcp/asset/7a6dce2c-7907-4300-9686-e071c156bfb9'
+      avatar: 'assets/images/testimonials/testimonial-avatar-2.png'
     },
     {
       name: 'Ana Rodríguez',
       location: 'Ciudad Victoria, Tamps.',
       text: 'Me gustó mucho la transparencia y el trato profesional. Siempre estuvieron al pendiente y cumplieron lo que prometieron.',
-      avatar: 'https://www.figma.com/api/mcp/asset/cc41f0d5-e939-406c-aec1-2fb16d58560b'
+      avatar: 'assets/images/testimonials/testimonial-avatar-3.png'
     }
   ];
 

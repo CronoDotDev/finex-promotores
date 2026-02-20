@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
     <header #header class="header">
       <div class="header__container">
         <div class="header__logo">
-          <img src="https://www.figma.com/api/mcp/asset/53dd4f92-def4-43f1-8dba-5f10b944cd0a" alt="Finex Promotores">
+          <img src="assets/images/layout/logo-header.png" alt="Finex Promotores">
         </div>
 
         <!-- Hamburger Toggle (mobile/tablet only) -->
@@ -165,6 +165,16 @@ gsap.registerPlugin(ScrollTrigger);
         img {
           width: 5.125rem;
           height: 8.8125rem;
+        }
+
+        // Revert to fluid size when scrolled to fit the smaller header
+        :host ::ng-deep .header--scrolled & {
+          height: 100%;
+
+          img {
+            width: auto;
+            height: 100%;
+          }
         }
       }
     }
