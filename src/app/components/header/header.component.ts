@@ -141,6 +141,7 @@ gsap.registerPlugin(ScrollTrigger);
       flex-shrink: 0;
       padding: 1rem 0;
       box-sizing: border-box;
+      overflow: visible;
 
       img {
         height: 100%;
@@ -148,6 +149,15 @@ gsap.registerPlugin(ScrollTrigger);
         aspect-ratio: 82 / 141;
         object-fit: contain;
         transition: height 0.3s ease;
+      }
+
+      @media (min-width: 1350px) {
+        height: auto;
+
+        img {
+          width: 5.125rem;
+          height: 8.8125rem;
+        }
       }
     }
 
