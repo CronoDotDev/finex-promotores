@@ -11,6 +11,7 @@ export interface ServiceItem {
   imports: [],
   template: `
     <section class="services" id="servicios">
+      <div class="services__decoration services__decoration--left"></div>
       <div class="services__container">
         <div class="services__header">
           <h2 class="services__title">Nuestros Servicios</h2>
@@ -45,15 +46,39 @@ export interface ServiceItem {
       padding: 60px 0;
       background: #fafafa;
       position: relative;
+      overflow: hidden;
 
       @media (min-width: vars.$breakpoint-md) {
         padding: 120px 0;
       }
     }
 
+    .services__decoration {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+
+      &--left {
+        top: 0;
+        left: 0;
+        width: 341px;
+        height: 1334px;
+        background-image: url('/assets/images/services/services-vector-decoration-left.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @media (max-width: vars.$breakpoint-md) {
+          width: 200px;
+          height: 780px;
+        }
+      }
+    }
+
     .services__container {
       max-width: 1920px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
       @include vars.container-padding(360px);
     }
 

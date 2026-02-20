@@ -91,25 +91,38 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
     .nosotros__decoration {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.1;
 
       &--top-left {
-        top: -10%;
-        left: -10%;
-        background-image: url("data:image/svg+xml,%3Csvg width='1446' height='1492' viewBox='0 0 1446 1492' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect opacity='0.15' x='278.844' width='1167.16' height='1210.29' rx='27' transform='rotate(43.9619 278.844 0)' fill='%23949494'/%3E%3C/svg%3E");
+        top: -5%;
+        left: 0;
+        width: 506px;
+        height: 578px;
+        background-image: url('/assets/images/about/nosotros-vector-decoration-top.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @media (max-width: vars.$breakpoint-md) {
+          width: 280px;
+          height: 320px;
+        }
       }
 
       &--bottom-right {
-        bottom: -10%;
-        right: -10%;
-        transform: rotate(180deg);
-        background-image: url("data:image/svg+xml,%3Csvg width='1446' height='1492' viewBox='0 0 1446 1492' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect opacity='0.15' x='278.844' width='1167.16' height='1210.29' rx='27' transform='rotate(43.9619 278.844 0)' fill='%23949494'/%3E%3C/svg%3E");
+        bottom: -5%;
+        right: 0;
+        width: 521px;
+        height: 600px;
+        background-image: url('/assets/images/about/nosotros-vector-decoration-bottom.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+
+        @media (max-width: vars.$breakpoint-md) {
+          width: 280px;
+          height: 330px;
+        }
       }
     }
 
