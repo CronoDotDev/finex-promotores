@@ -20,11 +20,11 @@ gsap.registerPlugin(ScrollTrigger);
                 <a [href]="item.link" class="header__link">{{ item.label }}</a>
               </li>
             }
+            <li class="header__item">
+              <button class="header__button-contact">Contacto</button>
+            </li>
           </ul>
         </nav>
-        <div class="header__actions">
-          <button class="header__button-contact">Contacto</button>
-        </div>
       </div>
     </header>
   `,
@@ -110,6 +110,7 @@ gsap.registerPlugin(ScrollTrigger);
 
     .header__list {
       display: flex;
+      align-items: center;
       gap: 32px; // Figma Gap
       list-style: none;
       padding: 0;
