@@ -172,7 +172,7 @@ gsap.registerPlugin(ScrollTrigger);
       flex-shrink: 0;
       background: vars.$primary-red;
       color: white;
-      font-family: 'Open Sans', sans-serif;
+      font-family: vars.$font-family-poppins;
       font-weight: 700;
       font-size: 18px;
       padding: 10px 20px;
@@ -184,9 +184,10 @@ gsap.registerPlugin(ScrollTrigger);
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
 
       @media (min-width: vars.$breakpoint-md) {
-        font-size: 21.6px;
+        font-size: 18px;
         padding: 13px 27px;
         border-radius: 0 0 50px 0;
         border-top-left-radius: 50px;

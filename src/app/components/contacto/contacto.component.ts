@@ -239,6 +239,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       @media (min-width: vars.$breakpoint-lg) {
         flex: 0 0 50%;
         max-width: 770px;
+        justify-content: flex-end;
       }
     }
 

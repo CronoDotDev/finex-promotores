@@ -89,6 +89,10 @@ export interface ServiceItem {
       @media (min-width: vars.$breakpoint-md) {
         margin-bottom: 32px;
       }
+
+      @media (min-width: vars.$breakpoint-lg) {
+        text-align: left;
+      }
     }
 
     .services__title {

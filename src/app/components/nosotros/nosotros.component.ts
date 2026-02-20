@@ -154,6 +154,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       @media (min-width: vars.$breakpoint-md) {
         font-size: 48px;
       }
+
+      @media (min-width: vars.$breakpoint-lg) {
+        text-align: left;
+      }
     }
 
     .nosotros__description {
@@ -169,6 +173,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
       @media (min-width: vars.$breakpoint-md) {
         font-size: 24px;
+      }
+
+      @media (min-width: vars.$breakpoint-lg) {
+        text-align: left;
+        margin: 0;
       }
     }
 

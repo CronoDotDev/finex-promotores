@@ -57,7 +57,7 @@ import { gsap } from 'gsap';
     @use '../../../styles/variables' as vars;
 
     .hero {
-      padding: 100px 0 60px;
+      padding: 120px 0 60px;
       min-height: 100vh;
       background: #ffffff;
       display: flex;
@@ -65,7 +65,7 @@ import { gsap } from 'gsap';
       overflow: hidden;
 
       @media (min-width: vars.$breakpoint-md) {
-        padding: 110px 0 60px;
+        padding: 130px 0 60px;
       }
 
       @media (min-width: vars.$breakpoint-lg) {
@@ -112,11 +112,15 @@ import { gsap } from 'gsap';
 
     .hero__headings-container {
       position: relative;
-      min-height: 220px;
+      min-height: 180px;
       width: 100%;
 
       @media (min-width: vars.$breakpoint-md) {
-        min-height: 250px;
+        min-height: 160px;
+      }
+
+      @media (min-width: vars.$breakpoint-lg) {
+        min-height: 220px;
       }
 
       @media (min-width: vars.$breakpoint-tv) {
