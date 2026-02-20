@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contacto',
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section class="contacto" id="contacto">
       <div class="contacto__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>

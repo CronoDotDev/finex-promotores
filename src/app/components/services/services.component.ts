@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 export interface ServiceItem {
   icon: string;
@@ -9,7 +8,7 @@ export interface ServiceItem {
 
 @Component({
   selector: 'app-services',
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section class="services" id="servicios">
       <div class="services__container">

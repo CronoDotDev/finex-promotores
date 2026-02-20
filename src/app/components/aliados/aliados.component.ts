@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+
 import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-aliados',
-  imports: [CommonModule, NgFor],
+  imports: [],
   template: `
     <section class="aliados" id="aliados">
       <div class="aliados__container">
@@ -14,17 +14,21 @@ import { gsap } from 'gsap';
 
         <div class="aliados__slider-wrapper">
           <div class="aliados__slider" #slider>
-            <div class="aliados__item" *ngFor="let logo of logos">
-                <div class="aliados__item-inner">
-                    <img [src]="logo.src" [alt]="logo.name" [class]="logo.class">
-                </div>
-            </div>
+            @for (logo of logos; track logo.name) {
+              <div class="aliados__item">
+                  <div class="aliados__item-inner">
+                      <img [src]="logo.src" [alt]="logo.name" [class]="logo.class">
+                  </div>
+              </div>
+            }
             <!-- Duplicate for infinite effect -->
-            <div class="aliados__item" *ngFor="let logo of logos">
-                <div class="aliados__item-inner">
-                    <img [src]="logo.src" [alt]="logo.name" [class]="logo.class">
-                </div>
-            </div>
+            @for (logo of logos; track logo.name) {
+              <div class="aliados__item">
+                  <div class="aliados__item-inner">
+                      <img [src]="logo.src" [alt]="logo.name" [class]="logo.class">
+                  </div>
+              </div>
+            }
           </div>
         </div>
       </div>

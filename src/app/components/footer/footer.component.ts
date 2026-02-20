@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
-  imports: [CommonModule],
+  imports: [],
   template: `
     <footer class="footer">
       <div class="footer__main">
@@ -118,11 +117,9 @@ import { CommonModule } from '@angular/common';
     }
 
     .footer__logo img {
-      width: 100px;
+      width: clamp(100px, 8vw, 141px);
       height: auto;
-      @media (min-width: vars.$breakpoint-md) {
-        width: 141px;
-      }
+      object-fit: contain;
     }
 
     .footer__tagline {
@@ -160,8 +157,10 @@ import { CommonModule } from '@angular/common';
       }
 
       img {
-          width: 18px;
-          height: auto;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          padding: 6px;
       }
     }
 

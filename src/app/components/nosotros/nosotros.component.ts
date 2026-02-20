@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nosotros',
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section class="nosotros" id="nosotros">
       <div class="nosotros__decoration nosotros__decoration--top-left"></div>
@@ -345,4 +344,4 @@ import { CommonModule } from '@angular/common';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NosotrosComponent {}
+export class NosotrosComponent { }

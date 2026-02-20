@@ -1,9 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-testimonials',
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section class="testimonials" id="testimonios">
       <div class="testimonials__container">
@@ -247,4 +246,4 @@ import { CommonModule } from '@angular/common';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TestimonialsComponent {}
+export class TestimonialsComponent { }

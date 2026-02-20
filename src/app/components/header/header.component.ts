@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal, ElementRef, ViewChild, AfterViewInit, inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, ChangeDetectionStrategy, signal, ElementRef, viewChild, afterNextRender } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,18 +6,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [],
   template: `
     <header #header class="header">
       <div class="header__container">
         <div class="header__logo">
           <img src="https://www.figma.com/api/mcp/asset/53dd4f92-def4-43f1-8dba-5f10b944cd0a" alt="Finex Promotores">
         </div>
-        <nav class="header__nav">
+        <nav class="header__nav" aria-label="Navegación principal">
           <ul class="header__list">
-            <li class="header__item" *ngFor="let item of menuItems">
-              <a [href]="item.link" class="header__link">{{ item.label }}</a>
-            </li>
+            @for (item of menuItems; track item.link) {
+              <li class="header__item">
+                <a [href]="item.link" class="header__link">{{ item.label }}</a>
+              </li>
+            }
           </ul>
         </nav>
         <div class="header__actions">
@@ -36,20 +37,30 @@ gsap.registerPlugin(ScrollTrigger);
       left: 0;
       width: 100%;
       z-index: 1000;
-      height: 100px; // Altura reducida por defecto
+      height: 100px;
+      overflow: hidden; // Force containment
       display: flex;
-      align-items: center;
+      // align-items removed to allow stretch
       background: linear-gradient(90deg, vars.$bg-gradient-start 0%, vars.$bg-gradient-end 100%);
       box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
       transition: all 0.3s ease;
 
+      &.header--scrolled {
+         height: 80px;
+      }
+
       @media (min-width: vars.$breakpoint-tv) {
         height: 173px; // Altura original solo en TVs/4K
+        
+        &.header--scrolled {
+           height: 100px;
+        }
       }
     }
 
     .header__container {
       width: 100%;
+      height: 100%; // Ensure container takes full header height
       max-width: 1920px;
       margin: 0 auto;
       display: flex;
@@ -67,17 +78,23 @@ gsap.registerPlugin(ScrollTrigger);
     }
 
     .header__logo {
+        height: 100%;
+        max-width: 400px;
         display: flex;
         align-items: center;
+        overflow: hidden;
 
       img {
-        height: 60px;
+        height: 100%;
         width: auto;
-        transition: height 0.3s ease;
+        max-width: 100%;
+        object-fit: contain;
+      }
+    }
 
-        @media (min-width: vars.$breakpoint-tv) {
-          height: 141px;
-        }
+    @media (min-width: vars.$breakpoint-tv) {
+      .header__logo img {
+        max-height: 173px;
       }
     }
 
@@ -89,7 +106,7 @@ gsap.registerPlugin(ScrollTrigger);
 
     // Scrolled state styles applied via class or GSAP
     :host ::ng-deep .header--scrolled .header__logo img {
-       height: 80px;
+       height: 100%;
     }
 
     .header__list {
@@ -180,9 +197,8 @@ gsap.registerPlugin(ScrollTrigger);
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements AfterViewInit {
-  @ViewChild('header') headerRef!: ElementRef<HTMLElement>;
-  platformId = inject(PLATFORM_ID);
+export class HeaderComponent {
+  private readonly headerRef = viewChild.required<ElementRef<HTMLElement>>('header');
 
   menuItems = [
     { label: 'Inicio', link: '#hero' },
@@ -193,15 +209,14 @@ export class HeaderComponent implements AfterViewInit {
     { label: 'Testimonios', link: '#testimonios' }
   ];
 
-  ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
+  constructor() {
+    afterNextRender(() => {
       this.initAnimations();
-    }
+    });
   }
 
   private initAnimations() {
-    const header = this.headerRef.nativeElement;
-    const logoImg = header.querySelector('.header__logo img');
+    const header = this.headerRef().nativeElement;
 
     // Initial Entrance Animation
     gsap.from(header, {
@@ -219,12 +234,8 @@ export class HeaderComponent implements AfterViewInit {
         const isScrolled = self.scroll() > 50;
         if (isScrolled) {
           header.classList.add('header--scrolled');
-          gsap.to(header, { height: 100, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-          if (logoImg) gsap.to(logoImg, { height: 80, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
         } else {
           header.classList.remove('header--scrolled');
-          gsap.to(header, { height: 173, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-          if (logoImg) gsap.to(logoImg, { height: 141, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
         }
       }
     });

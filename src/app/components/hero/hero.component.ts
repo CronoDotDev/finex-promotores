@@ -1,10 +1,9 @@
 import { Component, ChangeDetectionStrategy, signal, afterNextRender } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-hero',
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section class="hero" id="hero">
       <div class="hero__container">
@@ -101,12 +100,15 @@ import { gsap } from 'gsap';
 
     .hero__headings-container {
       position: relative;
-      height: 200px;
+      min-height: 220px;
       width: 100%;
-      overflow: hidden;
 
       @media (min-width: vars.$breakpoint-md) {
-        height: 240px;
+        min-height: 250px;
+      }
+
+      @media (min-width: vars.$breakpoint-tv) {
+        min-height: 300px;
       }
     }
 

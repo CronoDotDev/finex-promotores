@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-beneficios',
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section class="beneficios" id="beneficios">
       <div class="beneficios__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
@@ -247,7 +246,7 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class BeneficiosComponent {
   backgroundImage = 'https://www.figma.com/api/mcp/asset/eb23dee4-b7dd-47d3-95ab-1ff9751dcaa2';
-  
+
   benefits = [
     {
       title: 'Transparencia total',
