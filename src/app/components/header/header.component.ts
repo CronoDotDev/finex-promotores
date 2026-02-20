@@ -138,49 +138,17 @@ gsap.registerPlugin(ScrollTrigger);
       height: 100%;
       display: flex;
       align-items: center;
-      overflow: hidden;
       flex-shrink: 0;
+      padding: 1rem 0;
+      box-sizing: border-box;
 
       img {
-        width: 50px;
-        height: 86px;
-        object-fit: contain;
-        transition: all 0.3s ease;
-      }
-    }
-
-    @media (min-width: vars.$breakpoint-sm) {
-      .header__logo img {
-        width: 60px;
-        height: 103px;
-      }
-    }
-
-    @media (min-width: vars.$breakpoint-md) {
-      .header__logo img {
-        width: 70px;
-        height: 120px;
-      }
-    }
-
-    @media (min-width: vars.$breakpoint-lg) {
-      .header__logo img {
-        width: 82px;
-        height: 141px;
-      }
-    }
-
-    @media (min-width: vars.$breakpoint-tv) {
-      .header__logo img {
+        height: 100%;
         width: auto;
-        height: 150px;
+        aspect-ratio: 82 / 141;
+        object-fit: contain;
+        transition: height 0.3s ease;
       }
-    }
-
-    // Scrolled state: logo fits header height
-    :host ::ng-deep .header--scrolled .header__logo img {
-      height: 80%;
-      width: auto;
     }
 
     /* ==================== HAMBURGER MENU BUTTON ==================== */
