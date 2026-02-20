@@ -31,13 +31,13 @@ gsap.registerPlugin(ScrollTrigger);
         <!-- Desktop Nav -->
         <nav class="header__nav header__nav--desktop" aria-label="Navegación principal">
           <ul class="header__list">
-            @for (item of menuItems; track item.link) {
+            @for (item of menuItems; track item.id) {
               <li class="header__item">
-                <a [href]="item.link" class="header__link">{{ item.label }}</a>
+                <a (click)="scrollTo($event, item.id)" [href]="'#' + item.id" class="header__link">{{ item.label }}</a>
               </li>
             }
             <li class="header__item">
-              <button class="header__button-contact">Contacto</button>
+              <button class="header__button-contact" (click)="scrollTo($event, 'contacto')">Contacto</button>
             </li>
           </ul>
         </nav>
@@ -50,13 +50,13 @@ gsap.registerPlugin(ScrollTrigger);
           aria-label="Navegación principal"
         >
           <ul class="header__list header__list--mobile">
-            @for (item of menuItems; track item.link) {
+            @for (item of menuItems; track item.id) {
               <li class="header__item">
-                <a [href]="item.link" class="header__link header__link--mobile" (click)="closeMenu()">{{ item.label }}</a>
+                <a (click)="scrollTo($event, item.id); closeMenu()" [href]="'#' + item.id" class="header__link header__link--mobile">{{ item.label }}</a>
               </li>
             }
             <li class="header__item">
-              <button class="header__button-contact header__button-contact--mobile" (click)="closeMenu()">Contacto</button>
+              <button class="header__button-contact header__button-contact--mobile" (click)="scrollTo($event, 'contacto'); closeMenu()">Contacto</button>
             </li>
           </ul>
         </nav>
@@ -419,12 +419,12 @@ export class HeaderComponent {
   mobileMenuOpen = signal(false);
 
   menuItems = [
-    { label: 'Inicio', link: '#hero' },
-    { label: 'Nosotros', link: '#nosotros' },
-    { label: 'Aliados', link: '#aliados' },
-    { label: 'Servicios', link: '#servicios' },
-    { label: 'Beneficios', link: '#beneficios' },
-    { label: 'Testimonios', link: '#testimonios' }
+    { label: 'Inicio', id: 'hero' },
+    { label: 'Nosotros', id: 'nosotros' },
+    { label: 'Aliados', id: 'aliados' },
+    { label: 'Servicios', id: 'servicios' },
+    { label: 'Beneficios', id: 'beneficios' },
+    { label: 'Testimonios', id: 'testimonios' }
   ];
 
   constructor() {
@@ -465,5 +465,14 @@ export class HeaderComponent {
         }
       }
     });
+  }
+
+  scrollTo(event: Event, sectionId: string): void {
+    event.preventDefault();
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+    const headerHeight = this.headerRef().nativeElement.offsetHeight;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
   }
 }

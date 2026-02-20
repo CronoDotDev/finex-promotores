@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-contacto',
-  imports: [],
+  imports: [RevealDirective],
   template: `
     <section class="contacto" id="contacto">
       <div class="contacto__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
@@ -23,10 +24,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           </div>
 
           <div class="contacto__images">
-            <div class="contacto__image">
+            <div class="contacto__image" appReveal>
               <img src="assets/images/contact/contacto image-1.webp" alt="Asesoría Finex">
             </div>
-            <div class="contacto__image">
+            <div class="contacto__image" appReveal [appRevealDelay]="150">
               <img src="assets/images/contact/contacto-imagen-2.webp" alt="Trato Directo">
             </div>
           </div>

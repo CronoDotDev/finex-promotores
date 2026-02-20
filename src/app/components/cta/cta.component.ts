@@ -1,10 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-cta',
   template: `
     <section class="cta">
-      <div class="cta__container-wrapper">
+      <div class="cta__container-wrapper" appReveal>
         <div class="cta__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
         <div class="cta__overlay"></div>
         <div class="cta__container">

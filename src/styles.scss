@@ -1,6 +1,10 @@
 @use 'styles/variables' as vars;
 @use 'styles/theme' as theme;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: vars.$font-family-poppins;
@@ -10,4 +14,27 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* ==================== Reveal Animations ==================== */
+/* GSAP ScrollTrigger handles all animation states inline.
+   prefers-reduced-motion is respected via JS in the directive. */
+
+/* ==================== Decoration Float ==================== */
+@keyframes decoration-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decoration-float {
+    animation: none !important;
+  }
 }

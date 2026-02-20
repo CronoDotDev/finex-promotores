@@ -1,8 +1,13 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
+import { RevealDirective } from '../../directives/reveal.directive';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-nosotros',
-  imports: [],
+  imports: [RevealDirective],
   template: `
     <section class="nosotros" id="nosotros">
       <div class="nosotros__decoration nosotros__decoration--top-left"></div>
@@ -17,7 +22,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
         <!-- Misión -->
         <div class="nosotros__grid-item">
-          <div class="nosotros__image-wrapper">
+          <div class="nosotros__image-wrapper" appReveal>
             <img src="assets/images/about/nosotros-1.webp" alt="Misión">
           </div>
           <div class="nosotros__text-content">
@@ -28,7 +33,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
         <!-- Visión -->
         <div class="nosotros__grid-item nosotros__grid-item--reverse">
-          <div class="nosotros__image-wrapper">
+          <div class="nosotros__image-wrapper" appReveal>
             <img src="assets/images/about/nosotros-2.webp" alt="Visión">
           </div>
           <div class="nosotros__text-content">
@@ -39,7 +44,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
         <!-- Objetivos -->
         <div class="nosotros__objetivos">
-          <div class="nosotros__objetivos-image">
+          <div class="nosotros__objetivos-image" appReveal>
             <img src="assets/images/about/nosotros-3.webp" alt="Objetivos">
           </div>
           <div class="nosotros__objetivos-content">
@@ -93,6 +98,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       position: absolute;
       pointer-events: none;
       z-index: 0;
+      animation: decoration-float 6s ease-in-out infinite;
 
       &--top-left {
         top: -5%;
@@ -366,4 +372,29 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NosotrosComponent { }
+export class NosotrosComponent {
+  constructor() {
+    afterNextRender(() => {
+      this.initIconStagger();
+    });
+  }
+
+  private initIconStagger(): void {
+    const icons = document.querySelectorAll('.objetivo-card__icon');
+    if (!icons.length) return;
+
+    gsap.from(icons, {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.12,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.nosotros__objetivos-grid',
+        start: 'top 85%',
+        end: 'top 20%',
+        toggleActions: 'restart none none reset'
+      }
+    });
+  }
+}

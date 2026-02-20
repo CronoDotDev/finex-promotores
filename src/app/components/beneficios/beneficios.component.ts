@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
+import { RevealDirective } from '../../directives/reveal.directive';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -6,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-beneficios',
-  imports: [],
+  imports: [RevealDirective],
   template: `
     <section class="beneficios" id="beneficios">
       <div class="beneficios__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
@@ -31,7 +32,7 @@ gsap.registerPlugin(ScrollTrigger);
           </div>
         </div>
 
-        <div class="beneficios__image">
+        <div class="beneficios__image" appReveal>
           <img src="assets/images/benefits/porque-elegir.webp" alt="¿Por qué elegir FINEX?">
         </div>
       </div>

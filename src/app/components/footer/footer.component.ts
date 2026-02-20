@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-footer',
@@ -28,13 +32,13 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           <div class="footer__links">
             <h3 class="footer__title">Enlaces rápidos</h3>
             <ul class="footer__list">
-              <li><a href="#hero">Inicio</a></li>
-              <li><a href="#contacto">Contacto</a></li>
-              <li><a href="#testimonios">Testimonios</a></li>
-              <li><a href="#beneficios">¿Por qué elegir FINEX?</a></li>
-              <li><a href="#servicios">Nuestros Servicios</a></li>
-              <li><a href="#nosotros">Nosotros</a></li>
-              <li><a href="#aliados">Aliados</a></li>
+              <li><a href="#hero" (click)="scrollTo($event, 'hero')">Inicio</a></li>
+              <li><a href="#contacto" (click)="scrollTo($event, 'contacto')">Contacto</a></li>
+              <li><a href="#testimonios" (click)="scrollTo($event, 'testimonios')">Testimonios</a></li>
+              <li><a href="#beneficios" (click)="scrollTo($event, 'beneficios')">¿Por qué elegir FINEX?</a></li>
+              <li><a href="#servicios" (click)="scrollTo($event, 'servicios')">Nuestros Servicios</a></li>
+              <li><a href="#nosotros" (click)="scrollTo($event, 'nosotros')">Nosotros</a></li>
+              <li><a href="#aliados" (click)="scrollTo($event, 'aliados')">Aliados</a></li>
             </ul>
           </div>
 
@@ -117,12 +121,12 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     }
 
     .footer__logo img {
-      width: 82px;
+      width: auto;
       height: 141px;
+      aspect-ratio: 82 / 141;
       object-fit: contain;
 
       @media (min-width: vars.$breakpoint-md) {
-        width: 141px;
         height: 243px;
       }
     }
@@ -162,10 +166,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       }
 
       img {
-          width: 100%;
-          height: 100%;
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
           object-fit: contain;
-          padding: 6px;
       }
     }
 
@@ -280,4 +285,39 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
+
+  constructor() {
+    afterNextRender(() => {
+      this.initSocialStagger();
+    });
+  }
+
+  scrollTo(event: Event, sectionId: string): void {
+    event.preventDefault();
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+    const header = document.querySelector('.header') as HTMLElement;
+    const headerHeight = header ? header.offsetHeight : 0;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+  }
+
+  private initSocialStagger(): void {
+    const socialLinks = document.querySelectorAll('.footer__social-link');
+    if (!socialLinks.length) return;
+
+    gsap.from(socialLinks, {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.footer__social',
+        start: 'top 90%',
+        end: 'top 50%',
+        toggleActions: 'restart none none reset'
+      }
+    });
+  }
 }

@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export interface ServiceItem {
   icon: string;
@@ -57,6 +61,7 @@ export interface ServiceItem {
       position: absolute;
       pointer-events: none;
       z-index: 0;
+      animation: decoration-float 7s ease-in-out infinite;
 
       &--left {
         top: 0;
@@ -297,4 +302,29 @@ export class ServicesComponent {
       description: '<p>Ofrecemos capacitación y acompañamiento en temas financieros para que comprendas mejor tus opciones y tomes decisiones con mayor claridad y seguridad.</p>'
     }
   ];
+
+  constructor() {
+    afterNextRender(() => {
+      this.initStaggerAnimation();
+    });
+  }
+
+  private initStaggerAnimation(): void {
+    const icons = document.querySelectorAll('.service-item__icon-wrapper');
+    if (!icons.length) return;
+
+    gsap.from(icons, {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.services__list',
+        start: 'top 80%',
+        end: 'top 20%',
+        toggleActions: 'restart none none reset'
+      }
+    });
+  }
 }
