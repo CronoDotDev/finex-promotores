@@ -51,6 +51,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           left: 20px;
           right: 20px;
       }
+
+      @media (max-width: 768px) {
+          border-radius: 0 100px 0 100px;
+      }
+
+      @media (max-width: 480px) {
+          border-radius: 0 50px 0 50px;
+      }
     }
 
     .cta__overlay {
@@ -67,6 +75,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           left: 20px;
           right: 20px;
       }
+
+      @media (max-width: 768px) {
+          border-radius: 0 100px 0 100px;
+      }
+
+      @media (max-width: 480px) {
+          border-radius: 0 50px 0 50px;
+      }
     }
 
     .cta__container {
@@ -81,6 +97,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       @media (max-width: 768px) {
         height: 300px;
         border-radius: 0 100px 0 100px;
+      }
+
+      @media (max-width: 480px) {
+        height: 250px;
+        border-radius: 0 50px 0 50px;
       }
     }
 
@@ -106,5 +127,5 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CtaComponent {
-  backgroundImage = 'assets/images/contact/cta.jpg';
+  backgroundImage = 'assets/images/contact/cta.webp';
 }

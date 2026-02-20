@@ -32,7 +32,7 @@ gsap.registerPlugin(ScrollTrigger);
         </div>
 
         <div class="beneficios__image">
-          <img src="assets/images/benefits/porque-elegir.png" alt="¿Por qué elegir FINEX?">
+          <img src="assets/images/benefits/porque-elegir.webp" alt="¿Por qué elegir FINEX?">
         </div>
       </div>
     </section>
@@ -249,7 +249,7 @@ gsap.registerPlugin(ScrollTrigger);
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BeneficiosComponent {
-  backgroundImage = 'assets/images/benefits/porque-elegir-background.jpg';
+  backgroundImage = 'assets/images/benefits/porque-elegir-background.webp';
 
   benefits = [
     {

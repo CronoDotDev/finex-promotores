@@ -18,7 +18,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         <!-- Misión -->
         <div class="nosotros__grid-item">
           <div class="nosotros__image-wrapper">
-            <img src="assets/images/about/nosotros-1.png" alt="Misión">
+            <img src="assets/images/about/nosotros-1.webp" alt="Misión">
           </div>
           <div class="nosotros__text-content">
             <h3 class="nosotros__subtitle">Misión</h3>
@@ -29,7 +29,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         <!-- Visión -->
         <div class="nosotros__grid-item nosotros__grid-item--reverse">
           <div class="nosotros__image-wrapper">
-            <img src="assets/images/about/nosotros-2.png" alt="Visión">
+            <img src="assets/images/about/nosotros-2.webp" alt="Visión">
           </div>
           <div class="nosotros__text-content">
             <h3 class="nosotros__subtitle">Visión</h3>
@@ -40,7 +40,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         <!-- Objetivos -->
         <div class="nosotros__objetivos">
           <div class="nosotros__objetivos-image">
-            <img src="assets/images/about/nosotros-3.png" alt="Objetivos">
+            <img src="assets/images/about/nosotros-3.webp" alt="Objetivos">
           </div>
           <div class="nosotros__objetivos-content">
             <h3 class="nosotros__subtitle">Objetivos</h3>

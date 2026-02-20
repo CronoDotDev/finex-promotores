@@ -9,11 +9,12 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       <div class="contacto__overlay"></div>
 
       <div class="contacto__container">
-        <div class="contacto__info">
-          <div class="contacto__header">
-            <h2 class="contacto__title">Contacto</h2>
-          </div>
-          
+        <div class="contacto__header">
+          <h2 class="contacto__title">Contacto</h2>
+        </div>
+        
+        <div class="contacto__content">
+          <div class="contacto__info">
           <div class="contacto__info-box">
             <h3 class="contacto__box-title">Permítenos analizar tu caso y presentarte opciones claras y previamente evaluadas</h3>
             <p class="contacto__box-text">
@@ -23,10 +24,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
           <div class="contacto__images">
             <div class="contacto__image">
-              <img src="assets/images/contact/contacto image-1.jpg" alt="Asesoría Finex">
+              <img src="assets/images/contact/contacto image-1.webp" alt="Asesoría Finex">
             </div>
             <div class="contacto__image">
-              <img src="assets/images/contact/contacto-imagen-2.jpg" alt="Trato Directo">
+              <img src="assets/images/contact/contacto-imagen-2.webp" alt="Trato Directo">
             </div>
           </div>
 
@@ -47,6 +48,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
               <p>Tu información está protegida y solo será usada para contactarte y brindarte la mejor atención.</p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -95,12 +97,23 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       padding: 0 20px;
       display: flex;
       flex-direction: column;
+      gap: 32px;
+
+      @media (min-width: vars.$breakpoint-lg) {
+        @include vars.container-padding(180px);
+      }
+    }
+
+    .contacto__content {
+      display: flex;
+      flex-direction: column;
       gap: 40px;
+      width: 100%;
 
       @media (min-width: vars.$breakpoint-lg) {
         flex-direction: row;
         gap: 64px;
-        @include vars.container-padding(180px);
+        align-items: flex-start;
       }
     }
 
@@ -119,8 +132,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     .contacto__header {
         width: 100%;
         text-align: center;
+        margin-bottom: 8px; // reduced since gap handles most spacing
         @media (min-width: vars.$breakpoint-lg) {
             text-align: left;
+            margin-bottom: 0;
         }
     }
 
@@ -239,7 +254,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       @media (min-width: vars.$breakpoint-lg) {
         flex: 0 0 50%;
         max-width: 770px;
-        justify-content: flex-end;
       }
     }
 
@@ -304,5 +318,5 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactoComponent {
-  backgroundImage = 'assets/images/contact/contacto-background.jpg';
+  backgroundImage = 'assets/images/contact/contacto-background.webp';
 }

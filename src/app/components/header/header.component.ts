@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
     <header #header class="header">
       <div class="header__container">
         <div class="header__logo">
-          <img src="assets/images/layout/logo-header.png" alt="Finex Promotores">
+          <img src="assets/images/layout/logo-header.webp" alt="Finex Promotores">
         </div>
 
         <!-- Hamburger Toggle (mobile/tablet only) -->

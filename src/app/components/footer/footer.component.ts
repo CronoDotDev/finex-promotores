@@ -11,7 +11,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           <!-- Logo & Social -->
           <div class="footer__brand">
             <div class="footer__logo">
-              <img src="assets/images/layout/logo-footer.png" alt="Finex Logo">
+              <img src="assets/images/layout/logo-footer.webp" alt="Finex Logo">
             </div>
             <p class="footer__tagline">Promoción inteligente de oportunidades para mejorar tu hogar.</p>
             <div class="footer__social">

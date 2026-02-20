@@ -12,8 +12,13 @@ import { gsap } from 'gsap';
           <p class="testimonials__subtitle">Historias reales de quienes ya confiaron en FINEX</p>
         </div>
 
-        <div class="testimonials__slider-wrapper">
-          <div class="testimonials__slider" #slider>
+        <div class="testimonials__slider-container">
+          <button class="testimonials__nav-btn testimonials__nav-btn--prev" aria-label="Anterior" (click)="prev()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+
+          <div class="testimonials__slider-wrapper">
+            <div class="testimonials__slider" #slider>
             @for (testimonial of testimonials; track testimonial.name) {
               <div class="testimonial-card">
                 <div class="testimonial-card__quote-icon">
@@ -54,6 +59,11 @@ import { gsap } from 'gsap';
               </div>
             }
           </div>
+        </div>
+
+          <button class="testimonials__nav-btn testimonials__nav-btn--next" aria-label="Siguiente" (click)="next()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -110,11 +120,48 @@ import { gsap } from 'gsap';
       margin: 0;
     }
 
-    .testimonials__slider-wrapper {
+    .testimonials__slider-container {
+      position: relative;
       width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .testimonials__nav-btn {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid #e0e0e0;
+      color: vars.$primary-red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+      z-index: 2;
+
+      &:hover {
+        background: vars.$primary-red;
+        color: white;
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .testimonials__slider-wrapper {
+      flex: 1;
       overflow: hidden;
       position: relative;
       padding: 32px 0;
+      mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     }
 
     .testimonials__slider {
@@ -223,21 +270,25 @@ export class TestimonialsComponent {
       name: 'María González',
       location: 'Tampico, Tamps.',
       text: 'Desde el primer contacto sentí claridad y confianza. Me acompañaron en todo el proceso y hoy tengo el crédito que necesitaba para renovar mi vivienda. Totalmente recomendados.',
-      avatar: 'assets/images/testimonials/testimonial-avatar-1.png'
+      avatar: 'assets/images/testimonials/testimonial-avatar-1.webp'
     },
     {
       name: 'Luis Hernández',
       location: 'Reynosa, Tamps.',
       text: 'El equipo de FINEX me explicó cada paso y resolvió todas mis dudas. El proceso fue mucho más sencillo de lo que esperaba.',
-      avatar: 'assets/images/testimonials/testimonial-avatar-2.png'
+      avatar: 'assets/images/testimonials/testimonial-avatar-2.webp'
     },
     {
       name: 'Ana Rodríguez',
       location: 'Ciudad Victoria, Tamps.',
       text: 'Me gustó mucho la transparencia y el trato profesional. Siempre estuvieron al pendiente y cumplieron lo que prometieron.',
-      avatar: 'assets/images/testimonials/testimonial-avatar-3.png'
+      avatar: 'assets/images/testimonials/testimonial-avatar-3.webp'
     }
   ];
+
+  private tween!: gsap.core.Tween;
+  // 3 items, duration 40s. 40s / 3 items = exact time per item
+  private readonly timePerItem = 40 / 3;
 
   constructor() {
     afterNextRender(() => {
@@ -249,11 +300,29 @@ export class TestimonialsComponent {
     const slider = this.sliderRef().nativeElement;
     const totalWidth = slider.scrollWidth / 2;
 
-    gsap.to(slider, {
+    this.tween = gsap.to(slider, {
       x: -totalWidth - 15.5, // totalWidth + half gap (31/2)
       duration: 40,
       ease: 'none',
       repeat: -1
+    });
+  }
+
+  next(): void {
+    if (!this.tween) return;
+    gsap.to(this.tween, {
+      time: this.tween.time() + this.timePerItem,
+      duration: 0.5,
+      ease: 'power2.out'
+    });
+  }
+
+  prev(): void {
+    if (!this.tween) return;
+    gsap.to(this.tween, {
+      time: this.tween.time() - this.timePerItem,
+      duration: 0.5,
+      ease: 'power2.out'
     });
   }
 }

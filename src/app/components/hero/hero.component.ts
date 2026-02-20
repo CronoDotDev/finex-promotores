@@ -265,14 +265,14 @@ export class HeroComponent {
   activeImage = signal(0);
 
   images = [
-    "assets/images/hero/imagen-hero-1.png",
-    "assets/images/hero/imagen-hero-2.png",
-    "assets/images/hero/imagen-hero-3.png",
-    "assets/images/hero/imagen-hero-4.png",
-    "assets/images/hero/imagen-hero-5.png",
-    "assets/images/hero/imagen-hero-6.png",
-    "assets/images/hero/imagen-hero-7.png",
-    "assets/images/hero/imagen-hero-8.png"
+    "assets/images/hero/imagen-hero-1.webp",
+    "assets/images/hero/imagen-hero-2.webp",
+    "assets/images/hero/imagen-hero-3.webp",
+    "assets/images/hero/imagen-hero-4.webp",
+    "assets/images/hero/imagen-hero-5.webp",
+    "assets/images/hero/imagen-hero-6.webp",
+    "assets/images/hero/imagen-hero-7.webp",
+    "assets/images/hero/imagen-hero-8.webp"
   ];
 
   constructor() {
