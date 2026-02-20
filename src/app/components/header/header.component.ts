@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, signal, ElementRef, viewChild, afterNextRender } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -6,12 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [RouterLink],
   template: `
     <header #header class="header">
       <div class="header__container">
         <div class="header__logo">
-          <img src="assets/images/layout/logo-header.webp" alt="Finex Promotores">
+          <a routerLink="/"><img src="assets/images/layout/logo-header.webp" alt="Finex Promotores"></a>
         </div>
 
         <!-- Hamburger Toggle (mobile/tablet only) -->
@@ -427,7 +428,7 @@ export class HeaderComponent {
     { label: 'Testimonios', id: 'testimonios' }
   ];
 
-  constructor() {
+  constructor(private router: Router) {
     afterNextRender(() => {
       this.initAnimations();
     });
@@ -469,10 +470,17 @@ export class HeaderComponent {
 
   scrollTo(event: Event, sectionId: string): void {
     event.preventDefault();
-    const target = document.getElementById(sectionId);
-    if (!target) return;
-    const headerHeight = this.headerRef().nativeElement.offsetHeight;
-    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+
+    // If we're already on the home page, perform the custom smooth scroll
+    if (this.router.url === '/' || this.router.url.startsWith('/#')) {
+      const target = document.getElementById(sectionId);
+      if (!target) return;
+      const headerHeight = this.headerRef().nativeElement.offsetHeight;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+      // If we are on another page (e.g. privacy or terms), navigate to home with the fragment
+      this.router.navigate(['/'], { fragment: sectionId });
+    }
   }
 }
