@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, afterNextRender, ElementRef, viewChild } from '@angular/core';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-testimonials',
@@ -11,67 +12,47 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           <p class="testimonials__subtitle">Historias reales de quienes ya confiaron en FINEX</p>
         </div>
 
-        <div class="testimonials__cards-wrapper">
-          <div class="testimonials__cards">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card">
-              <div class="testimonial-card__quote-icon">
-                <img src="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote">
-              </div>
-              <div class="testimonial-card__content">
-                <p class="testimonial-card__text">Desde el primer contacto sentí claridad y confianza. Me acompañaron en todo el proceso y hoy tengo el crédito que necesitaba para renovar mi vivienda. Totalmente recomendados.</p>
-                
-                <div class="testimonial-card__author">
-                  <div class="testimonial-card__avatar">
-                    <img src="https://www.figma.com/api/mcp/asset/75786ec0-7d7f-4580-b6c8-970f77df35e5" alt="María González">
-                  </div>
-                  <div class="testimonial-card__info">
-                    <h4 class="testimonial-card__name">María González</h4>
-                    <p class="testimonial-card__location">Tampico, Tamps.</p>
+        <div class="testimonials__slider-wrapper">
+          <div class="testimonials__slider" #slider>
+            @for (testimonial of testimonials; track testimonial.name) {
+              <div class="testimonial-card">
+                <div class="testimonial-card__quote-icon">
+                  <img src="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote">
+                </div>
+                <div class="testimonial-card__content">
+                  <p class="testimonial-card__text">{{ testimonial.text }}</p>
+                  <div class="testimonial-card__author">
+                    <div class="testimonial-card__avatar">
+                      <img [src]="testimonial.avatar" [alt]="testimonial.name">
+                    </div>
+                    <div class="testimonial-card__info">
+                      <h4 class="testimonial-card__name">{{ testimonial.name }}</h4>
+                      <p class="testimonial-card__location">{{ testimonial.location }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card">
-              <div class="testimonial-card__quote-icon">
-                <img src="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote">
-              </div>
-              <div class="testimonial-card__content">
-                <p class="testimonial-card__text">El equipo de FINEX me explicó cada paso y resolvió todas mis dudas. El proceso fue mucho más sencillo de lo que esperaba.</p>
-                
-                <div class="testimonial-card__author">
-                  <div class="testimonial-card__avatar">
-                    <img src="https://www.figma.com/api/mcp/asset/7a6dce2c-7907-4300-9686-e071c156bfb9" alt="Luis Hernández">
-                  </div>
-                  <div class="testimonial-card__info">
-                    <h4 class="testimonial-card__name">Luis Hernández</h4>
-                    <p class="testimonial-card__location">Reynosa, Tamps.</p>
+            }
+            <!-- Duplicate for infinite loop effect -->
+            @for (testimonial of testimonials; track testimonial.name) {
+              <div class="testimonial-card">
+                <div class="testimonial-card__quote-icon">
+                  <img src="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote">
+                </div>
+                <div class="testimonial-card__content">
+                  <p class="testimonial-card__text">{{ testimonial.text }}</p>
+                  <div class="testimonial-card__author">
+                    <div class="testimonial-card__avatar">
+                      <img [src]="testimonial.avatar" [alt]="testimonial.name">
+                    </div>
+                    <div class="testimonial-card__info">
+                      <h4 class="testimonial-card__name">{{ testimonial.name }}</h4>
+                      <p class="testimonial-card__location">{{ testimonial.location }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card">
-              <div class="testimonial-card__quote-icon">
-                <img src="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote">
-              </div>
-              <div class="testimonial-card__content">
-                <p class="testimonial-card__text">Me gustó mucho la transparencia y el trato profesional. Siempre estuvieron al pendiente y cumplieron lo que prometieron.</p>
-                
-                <div class="testimonial-card__author">
-                  <div class="testimonial-card__avatar">
-                    <img src="https://www.figma.com/api/mcp/asset/cc41f0d5-e939-406c-aec1-2fb16d58560b" alt="Ana Rodríguez">
-                  </div>
-                  <div class="testimonial-card__info">
-                    <h4 class="testimonial-card__name">Ana Rodríguez</h4>
-                    <p class="testimonial-card__location">Ciudad Victoria, Tamps.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            }
           </div>
         </div>
       </div>
@@ -86,6 +67,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       width: 100%;
       display: flex;
       justify-content: center;
+      overflow: hidden;
     }
 
     .testimonials__container {
@@ -128,31 +110,18 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       margin: 0;
     }
 
-    .testimonials__cards-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        padding: 32px 0;
+    .testimonials__slider-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: 32px 0;
     }
 
-    .testimonials__cards {
+    .testimonials__slider {
       display: flex;
       gap: 31px;
-      width: 1300px;
-      justify-content: center;
-
-      @media (max-width: 1340px) {
-        width: 100%;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding: 20px;
-        
-        &::-webkit-scrollbar {
-          display: none;
-        }
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
+      width: max-content;
+      align-items: stretch;
     }
 
     .testimonial-card {
@@ -167,7 +136,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       gap: 32px;
 
       @media (max-width: 500px) {
-        flex: 0 0 100%;
+        flex: 0 0 300px;
         padding: 40px;
       }
     }
@@ -175,7 +144,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     .testimonial-card__quote-icon {
       position: absolute;
       top: 24.85px;
-      right: 40px; // Positioning roughly at 3/4 of the card width
+      right: 40px;
       width: 78.58px;
       height: 78.58px;
       
@@ -190,7 +159,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       display: flex;
       flex-direction: column;
       gap: 32px;
-      padding-top: 64px; // Matches the top padding from Figma's Container inside Card
+      padding-top: 64px;
     }
 
     .testimonial-card__text {
@@ -246,4 +215,45 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TestimonialsComponent { }
+export class TestimonialsComponent {
+  private readonly sliderRef = viewChild.required<ElementRef<HTMLElement>>('slider');
+
+  testimonials = [
+    {
+      name: 'María González',
+      location: 'Tampico, Tamps.',
+      text: 'Desde el primer contacto sentí claridad y confianza. Me acompañaron en todo el proceso y hoy tengo el crédito que necesitaba para renovar mi vivienda. Totalmente recomendados.',
+      avatar: 'https://www.figma.com/api/mcp/asset/75786ec0-7d7f-4580-b6c8-970f77df35e5'
+    },
+    {
+      name: 'Luis Hernández',
+      location: 'Reynosa, Tamps.',
+      text: 'El equipo de FINEX me explicó cada paso y resolvió todas mis dudas. El proceso fue mucho más sencillo de lo que esperaba.',
+      avatar: 'https://www.figma.com/api/mcp/asset/7a6dce2c-7907-4300-9686-e071c156bfb9'
+    },
+    {
+      name: 'Ana Rodríguez',
+      location: 'Ciudad Victoria, Tamps.',
+      text: 'Me gustó mucho la transparencia y el trato profesional. Siempre estuvieron al pendiente y cumplieron lo que prometieron.',
+      avatar: 'https://www.figma.com/api/mcp/asset/cc41f0d5-e939-406c-aec1-2fb16d58560b'
+    }
+  ];
+
+  constructor() {
+    afterNextRender(() => {
+      this.initSlider();
+    });
+  }
+
+  private initSlider(): void {
+    const slider = this.sliderRef().nativeElement;
+    const totalWidth = slider.scrollWidth / 2;
+
+    gsap.to(slider, {
+      x: -totalWidth - 15.5, // totalWidth + half gap (31/2)
+      duration: 40,
+      ease: 'none',
+      repeat: -1
+    });
+  }
+}
