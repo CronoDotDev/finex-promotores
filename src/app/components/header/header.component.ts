@@ -85,9 +85,8 @@ gsap.registerPlugin(ScrollTrigger);
         overflow: hidden;
 
       img {
-        height: 100%;
-        width: auto;
-        max-width: 100%;
+        width: 82px;
+        height: 141px;
         object-fit: contain;
       }
     }

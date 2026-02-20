@@ -117,9 +117,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     }
 
     .footer__logo img {
-      width: clamp(100px, 8vw, 141px);
-      height: auto;
+      width: 82px;
+      height: 141px;
       object-fit: contain;
+
+      @media (min-width: vars.$breakpoint-md) {
+        width: 141px;
+        height: 243px;
+      }
     }
 
     .footer__tagline {
