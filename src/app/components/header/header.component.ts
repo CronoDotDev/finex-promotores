@@ -99,6 +99,14 @@ gsap.registerPlugin(ScrollTrigger);
         }
       }
 
+      @media (min-width: 1350px) {
+        height: 10.8125rem;
+
+        &.header--scrolled {
+          height: 5rem;
+        }
+      }
+
       @media (min-width: vars.$breakpoint-tv) {
         height: 173px;
 
