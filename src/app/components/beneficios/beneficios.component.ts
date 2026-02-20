@@ -84,6 +84,7 @@ gsap.registerPlugin(ScrollTrigger);
       @media (min-width: vars.$breakpoint-lg) {
         flex-direction: row;
         justify-content: space-between;
+        align-items: stretch;
         @include vars.container-padding(180px);
       }
     }
@@ -221,12 +222,14 @@ gsap.registerPlugin(ScrollTrigger);
 
       @media (min-width: vars.$breakpoint-lg) {
         flex: 0 0 40%;
-        height: 600px;
+        height: auto;
+        max-width: none;
+        align-self: stretch;
+        padding: 0 20px 20px 0;
       }
 
       @media (min-width: vars.$breakpoint-tv) {
         flex: 0 0 575px;
-        height: 847px;
       }
 
       img {
