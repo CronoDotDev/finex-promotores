@@ -311,7 +311,7 @@ export class TestimonialsComponent {
   next(): void {
     if (!this.tween) return;
     gsap.to(this.tween, {
-      time: this.tween.time() + this.timePerItem,
+      totalTime: this.tween.totalTime() + this.timePerItem,
       duration: 0.5,
       ease: 'power2.out'
     });
@@ -319,8 +319,15 @@ export class TestimonialsComponent {
 
   prev(): void {
     if (!this.tween) return;
+
+    // If we're too close to 0, immediately jump forward by one full loop duration
+    // so we can animate backwards smoothly without hitting the 0 boundary.
+    if (this.tween.totalTime() < this.timePerItem) {
+      this.tween.totalTime(this.tween.totalTime() + this.tween.duration());
+    }
+
     gsap.to(this.tween, {
-      time: this.tween.time() - this.timePerItem,
+      totalTime: this.tween.totalTime() - this.timePerItem,
       duration: 0.5,
       ease: 'power2.out'
     });
