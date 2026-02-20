@@ -10,8 +10,12 @@ gsap.registerPlugin(ScrollTrigger);
   imports: [RevealDirective],
   template: `
     <section class="nosotros" id="nosotros">
-      <div class="nosotros__decoration nosotros__decoration--top-left"></div>
-      <div class="nosotros__decoration nosotros__decoration--bottom-right"></div>
+      <div class="nosotros__decoration-wrapper nosotros__decoration-wrapper--top-left">
+        <div class="nosotros__decoration nosotros__decoration--top-left"></div>
+      </div>
+      <div class="nosotros__decoration-wrapper nosotros__decoration-wrapper--bottom-right">
+        <div class="nosotros__decoration nosotros__decoration--bottom-right"></div>
+      </div>
 
       <div class="nosotros__container">
         <h2 class="nosotros__title">Nosotros</h2>
@@ -94,15 +98,26 @@ gsap.registerPlugin(ScrollTrigger);
       }
     }
 
-    .nosotros__decoration {
+    .nosotros__decoration-wrapper {
       position: absolute;
       pointer-events: none;
       z-index: 0;
-      animation: decoration-float 6s ease-in-out infinite;
 
       &--top-left {
         top: -5%;
         left: 0;
+      }
+
+      &--bottom-right {
+        bottom: -5%;
+        right: 0;
+      }
+    }
+
+    .nosotros__decoration {
+      animation: decoration-float 6s ease-in-out infinite;
+
+      &--top-left {
         width: 506px;
         height: 578px;
         background-image: url('/assets/images/about/nosotros-vector-decoration-top.svg');
@@ -116,8 +131,6 @@ gsap.registerPlugin(ScrollTrigger);
       }
 
       &--bottom-right {
-        bottom: -5%;
-        right: 0;
         width: 521px;
         height: 600px;
         background-image: url('/assets/images/about/nosotros-vector-decoration-bottom.svg');
@@ -380,6 +393,30 @@ export class NosotrosComponent {
   }
 
   private initIconStagger(): void {
+    gsap.from('.nosotros__decoration-wrapper--top-left', {
+      scrollTrigger: {
+        trigger: '.nosotros__decoration-wrapper--top-left',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      x: -150,
+      opacity: 0,
+      duration: 1.5,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.nosotros__decoration-wrapper--bottom-right', {
+      scrollTrigger: {
+        trigger: '.nosotros__decoration-wrapper--bottom-right',
+        start: 'top 85%',
+        toggleActions: 'play none none reverse'
+      },
+      x: 150,
+      opacity: 0,
+      duration: 1.5,
+      ease: 'power3.out'
+    });
+
     const icons = document.querySelectorAll('.objetivo-card__icon');
     if (!icons.length) return;
 

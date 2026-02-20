@@ -15,7 +15,9 @@ export interface ServiceItem {
   imports: [],
   template: `
     <section class="services" id="servicios">
-      <div class="services__decoration services__decoration--left"></div>
+      <div class="services__decoration-wrapper services__decoration-wrapper--left">
+        <div class="services__decoration services__decoration--left"></div>
+      </div>
       <div class="services__container">
         <div class="services__header">
           <h2 class="services__title">Nuestros Servicios</h2>
@@ -57,15 +59,21 @@ export interface ServiceItem {
       }
     }
 
-    .services__decoration {
+    .services__decoration-wrapper {
       position: absolute;
       pointer-events: none;
       z-index: 0;
-      animation: decoration-float 7s ease-in-out infinite;
 
       &--left {
         top: 0;
         left: 0;
+      }
+    }
+
+    .services__decoration {
+      animation: decoration-float 7s ease-in-out infinite;
+
+      &--left {
         width: 341px;
         height: 1334px;
         background-image: url('/assets/images/services/services-vector-decoration-left.svg');
@@ -310,6 +318,18 @@ export class ServicesComponent {
   }
 
   private initStaggerAnimation(): void {
+    gsap.from('.services__decoration-wrapper--left', {
+      scrollTrigger: {
+        trigger: '.services__decoration-wrapper--left',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      x: -150,
+      opacity: 0,
+      duration: 1.5,
+      ease: 'power3.out'
+    });
+
     const icons = document.querySelectorAll('.service-item__icon-wrapper');
     if (!icons.length) return;
 

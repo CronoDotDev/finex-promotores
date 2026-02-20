@@ -311,9 +311,8 @@ export class FooterComponent {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: '.footer__social',
-        start: 'top 90%',
-        end: 'top 50%',
-        toggleActions: 'restart none none reset'
+        start: 'top 95%',
+        toggleActions: 'play none none reverse'
       }
     });
   }
