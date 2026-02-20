@@ -1,0 +1,45 @@
+// Design Tokens - Extracted from Figma
+$primary-red: #f0070a;
+$text-dark: #2f3137;
+$text-light: #ffffff;
+$text-muted: #1f1f1f;
+$bg-gradient-start: #9e9e9e;
+$bg-gradient-end: #383838;
+
+$font-family-poppins: 'Poppins', sans-serif;
+$font-family-roboto: 'Roboto', sans-serif;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+$breakpoint-tv: 1920px;
+
+// Mixin para padding lateral responsivo
+@mixin container-padding($desktop-px: 360px) {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media (min-width: $breakpoint-md) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    // Reducción proporcional para laptops
+    padding-left: calc(#{$desktop-px} * 0.5);
+    padding-right: calc(#{$desktop-px} * 0.5);
+  }
+
+  @media (min-width: $breakpoint-tv) {
+    padding-left: $desktop-px;
+    padding-right: $desktop-px;
+  }
+}

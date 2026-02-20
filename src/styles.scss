@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/variables' as vars;
+@use 'styles/theme' as theme;
+
+body {
+  margin: 0;
+  font-family: vars.$font-family-poppins;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
