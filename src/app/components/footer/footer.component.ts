@@ -61,7 +61,7 @@ gsap.registerPlugin(ScrollTrigger);
               <h3 class="footer__title">Buzón</h3>
               <p>
                 Para quejas y sugerencias también puedes escribirnos a:<br>
-                <strong><a href="mailto:contacto@finexpromotores.com" target="_blank" style="color: white; text-decoration: underline;">contacto&#64;finexpromotores.com</a></strong>
+                <strong><a href="mailto:contacto@finexpromotores.com" style="color: white; text-decoration: underline;">contacto&#64;finexpromotores.com</a></strong>
               </p>
             </div>
           </div>

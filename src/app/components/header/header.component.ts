@@ -152,6 +152,11 @@ gsap.registerPlugin(ScrollTrigger);
       box-sizing: border-box;
       overflow: visible;
 
+      a {
+        height: 100%;
+        display: block;
+      }
+
       img {
         height: 100%;
         width: auto;
@@ -162,6 +167,10 @@ gsap.registerPlugin(ScrollTrigger);
 
       @media (min-width: 1350px) {
         height: auto;
+        
+        a {
+          height: auto;
+        }
 
         img {
           width: 5.125rem;
@@ -171,6 +180,10 @@ gsap.registerPlugin(ScrollTrigger);
         // Revert to fluid size when scrolled to fit the smaller header
         :host ::ng-deep .header--scrolled & {
           height: 100%;
+
+          a {
+            height: 100%;
+          }
 
           img {
             width: auto;
