@@ -1,5 +1,6 @@
 import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, signal, afterNextRender } from '@angular/core';
+import { Router } from '@angular/router';
 import { gsap } from 'gsap';
 
 @Component({
@@ -37,7 +38,7 @@ import { gsap } from 'gsap';
           </ul>
 
           <div class="hero__actions">
-            <button class="hero__button">Únete a la Familia FINEX</button>
+            <button class="hero__button" (click)="scrollToContacto()">Únete a la Familia FINEX</button>
           </div>
         </div>
 
@@ -276,7 +277,7 @@ export class HeroComponent {
     "assets/images/hero/imagen-hero-8.webp"
   ];
 
-  constructor() {
+  constructor(private router: Router) {
     afterNextRender(() => {
       const init = () => this.startIntervals();
       if ('requestIdleCallback' in window) {
@@ -295,5 +296,18 @@ export class HeroComponent {
     setInterval(() => {
       this.activeImage.update(v => (v + 1) % this.images.length);
     }, 4000);
+  }
+
+  scrollToContacto(): void {
+    if (this.router.url === '/' || this.router.url.startsWith('/#')) {
+      const target = document.getElementById('contacto');
+      if (!target) return;
+      const header = document.querySelector('.header') as HTMLElement;
+      const headerHeight = header ? header.offsetHeight : 100;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+      this.router.navigate(['/'], { fragment: 'contacto' });
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
@@ -9,7 +10,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
         <div class="cta__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
         <div class="cta__overlay"></div>
         <div class="cta__container">
-          <button class="cta__button">Únete a la Familia FINEX</button>
+          <button class="cta__button" (click)="scrollToContacto()">Únete a la Familia FINEX</button>
         </div>
       </div>
     </section>
@@ -129,4 +130,19 @@ import { RevealDirective } from '../../directives/reveal.directive';
 })
 export class CtaComponent {
   backgroundImage = 'assets/images/contact/cta.webp';
+
+  constructor(private router: Router) { }
+
+  scrollToContacto(): void {
+    if (this.router.url === '/' || this.router.url.startsWith('/#')) {
+      const target = document.getElementById('contacto');
+      if (!target) return;
+      const header = document.querySelector('.header') as HTMLElement;
+      const headerHeight = header ? header.offsetHeight : 100;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+      this.router.navigate(['/'], { fragment: 'contacto' });
+    }
+  }
 }

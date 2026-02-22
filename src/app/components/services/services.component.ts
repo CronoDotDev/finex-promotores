@@ -1,5 +1,6 @@
 import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
+import { Router } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -39,7 +40,7 @@ export interface ServiceItem {
               </div>
             }
             <div class="services__cta">
-                <button class="services__button">Únete a la Familia FINEX</button>
+                <button class="services__button" (click)="scrollToContacto()">Únete a la Familia FINEX</button>
             </div>
           </div>
         </div>
@@ -312,7 +313,7 @@ export class ServicesComponent {
     }
   ];
 
-  constructor() {
+  constructor(private router: Router) {
     afterNextRender(() => {
       const init = () => this.initStaggerAnimation();
       if ('requestIdleCallback' in window) {
@@ -352,5 +353,18 @@ export class ServicesComponent {
         toggleActions: 'restart none none reset'
       }
     });
+  }
+
+  scrollToContacto(): void {
+    if (this.router.url === '/' || this.router.url.startsWith('/#')) {
+      const target = document.getElementById('contacto');
+      if (!target) return;
+      const header = document.querySelector('.header') as HTMLElement;
+      const headerHeight = header ? header.offsetHeight : 100;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    } else {
+      this.router.navigate(['/'], { fragment: 'contacto' });
+    }
   }
 }
