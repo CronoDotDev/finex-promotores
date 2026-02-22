@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { gsap } from 'gsap';
@@ -7,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-beneficios',
-  imports: [RevealDirective],
+  imports: [RevealDirective, NgOptimizedImage],
   template: `
     <section class="beneficios" id="beneficios">
       <div class="beneficios__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
@@ -33,7 +34,7 @@ gsap.registerPlugin(ScrollTrigger);
         </div>
 
         <div class="beneficios__image" appReveal>
-          <img src="assets/images/benefits/porque-elegir.webp" alt="¿Por qué elegir FINEX?">
+          <img ngSrc="assets/images/benefits/porque-elegir.webp" alt="¿Por qué elegir FINEX?" fill>
         </div>
       </div>
     </section>

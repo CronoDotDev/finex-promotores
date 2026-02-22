@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, signal, ElementRef, viewChild, afterNextRender } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
@@ -7,12 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink, NgOptimizedImage],
   template: `
     <header #header class="header">
       <div class="header__container">
         <div class="header__logo">
-          <a routerLink="/"><img src="assets/images/layout/logo-header.webp" alt="Finex Promotores"></a>
+          <a routerLink="/"><img ngSrc="assets/images/layout/logo-header.webp" alt="Finex Promotores" width="90" height="155" priority></a>
         </div>
 
         <!-- Hamburger Toggle (mobile/tablet only) -->

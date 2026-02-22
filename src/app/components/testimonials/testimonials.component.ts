@@ -1,9 +1,10 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, afterNextRender, ElementRef, viewChild } from '@angular/core';
 import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-testimonials',
-  imports: [],
+  imports: [NgOptimizedImage],
   template: `
     <section class="testimonials" id="testimonios">
       <div class="testimonials__container">
@@ -22,13 +23,13 @@ import { gsap } from 'gsap';
             @for (testimonial of testimonials; track testimonial.name) {
               <div class="testimonial-card">
                 <div class="testimonial-card__quote-icon">
-                  <img src="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote">
+                  <img ngSrc="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote" width="78" height="78">
                 </div>
                 <div class="testimonial-card__content">
                   <p class="testimonial-card__text">{{ testimonial.text }}</p>
                   <div class="testimonial-card__author">
                     <div class="testimonial-card__avatar">
-                      <img [src]="testimonial.avatar" [alt]="testimonial.name">
+                      <img [ngSrc]="testimonial.avatar" [alt]="testimonial.name" width="94" height="94">
                     </div>
                     <div class="testimonial-card__info">
                       <h4 class="testimonial-card__name">{{ testimonial.name }}</h4>
@@ -42,13 +43,13 @@ import { gsap } from 'gsap';
             @for (testimonial of testimonials; track testimonial.name) {
               <div class="testimonial-card">
                 <div class="testimonial-card__quote-icon">
-                  <img src="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote">
+                  <img ngSrc="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote" width="78" height="78">
                 </div>
                 <div class="testimonial-card__content">
                   <p class="testimonial-card__text">{{ testimonial.text }}</p>
                   <div class="testimonial-card__author">
                     <div class="testimonial-card__avatar">
-                      <img [src]="testimonial.avatar" [alt]="testimonial.name">
+                      <img [ngSrc]="testimonial.avatar" [alt]="testimonial.name" width="94" height="94">
                     </div>
                     <div class="testimonial-card__info">
                       <h4 class="testimonial-card__name">{{ testimonial.name }}</h4>

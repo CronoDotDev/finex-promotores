@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { gsap } from 'gsap';
@@ -7,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-nosotros',
-  imports: [RevealDirective],
+  imports: [RevealDirective, NgOptimizedImage],
   template: `
     <section class="nosotros" id="nosotros">
       <div class="nosotros__decoration-wrapper nosotros__decoration-wrapper--top-left">
@@ -27,7 +28,7 @@ gsap.registerPlugin(ScrollTrigger);
         <!-- Misión -->
         <div class="nosotros__grid-item">
           <div class="nosotros__image-wrapper" appReveal>
-            <img src="assets/images/about/nosotros-1.webp" alt="Misión">
+            <img ngSrc="assets/images/about/nosotros-1.webp" alt="Misión" width="500" height="333">
           </div>
           <div class="nosotros__text-content">
             <h3 class="nosotros__subtitle">Misión</h3>
@@ -38,7 +39,7 @@ gsap.registerPlugin(ScrollTrigger);
         <!-- Visión -->
         <div class="nosotros__grid-item nosotros__grid-item--reverse">
           <div class="nosotros__image-wrapper" appReveal>
-            <img src="assets/images/about/nosotros-2.webp" alt="Visión">
+            <img ngSrc="assets/images/about/nosotros-2.webp" alt="Visión" width="500" height="333">
           </div>
           <div class="nosotros__text-content">
             <h3 class="nosotros__subtitle">Visión</h3>
@@ -49,7 +50,7 @@ gsap.registerPlugin(ScrollTrigger);
         <!-- Objetivos -->
         <div class="nosotros__objetivos">
           <div class="nosotros__objetivos-image" appReveal>
-            <img src="assets/images/about/nosotros-3.webp" alt="Objetivos">
+            <img ngSrc="assets/images/about/nosotros-3.webp" alt="Objetivos" fill>
           </div>
           <div class="nosotros__objetivos-content">
             <h3 class="nosotros__subtitle">Objetivos</h3>

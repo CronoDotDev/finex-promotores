@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,7 +13,7 @@ export interface ServiceItem {
 
 @Component({
   selector: 'app-services',
-  imports: [],
+  imports: [NgOptimizedImage],
   template: `
     <section class="services" id="servicios">
       <div class="services__decoration-wrapper services__decoration-wrapper--left">
@@ -29,7 +30,7 @@ export interface ServiceItem {
             @for (service of services; track service.title) {
               <div class="service-item">
                 <div class="service-item__icon-wrapper">
-                  <img [src]="service.icon" [alt]="service.title" class="service-item__icon-img">
+                  <img [ngSrc]="service.icon" [alt]="service.title" class="service-item__icon-img" width="64" height="64">
                 </div>
                 <div class="service-item__content">
                   <h3 class="service-item__title">{{ service.title }}</h3>

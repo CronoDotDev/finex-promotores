@@ -1,9 +1,10 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-contacto',
-  imports: [RevealDirective],
+  imports: [RevealDirective, NgOptimizedImage],
   template: `
     <section class="contacto" id="contacto">
       <div class="contacto__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
@@ -25,10 +26,10 @@ import { RevealDirective } from '../../directives/reveal.directive';
 
           <div class="contacto__images">
             <div class="contacto__image" appReveal>
-              <img src="assets/images/contact/contacto image-1.webp" alt="Asesoría Finex">
+              <img ngSrc="assets/images/contact/contacto image-1.webp" alt="Asesoría Finex" fill>
             </div>
             <div class="contacto__image" appReveal [appRevealDelay]="150">
-              <img src="assets/images/contact/contacto-imagen-2.webp" alt="Trato Directo">
+              <img ngSrc="assets/images/contact/contacto-imagen-2.webp" alt="Trato Directo" fill>
             </div>
           </div>
 

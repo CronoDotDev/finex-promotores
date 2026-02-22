@@ -1,9 +1,10 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, signal, afterNextRender } from '@angular/core';
 import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [NgOptimizedImage],
   template: `
     <section class="hero" id="hero">
       <div class="hero__container">
@@ -43,10 +44,10 @@ import { gsap } from 'gsap';
         <div class="hero__carousel">
           <div class="hero__image-wrapper">
              @for (img of images; track img; let i = $index) {
-                <img [src]="img" 
+                <img [ngSrc]="img" 
                      [class.hero__image--active]="activeImage() === i"
                      class="hero__image" 
-                     alt="Financia tu hogar">
+                     alt="Financia tu hogar" fill [priority]="i === 0">
              }
           </div>
         </div>

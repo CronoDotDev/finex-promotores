@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
@@ -7,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink],
+  imports: [RouterLink, NgOptimizedImage],
   template: `
     <footer class="footer">
       <div class="footer__main">
@@ -16,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
           <!-- Logo & Social -->
           <div class="footer__brand">
             <div class="footer__logo">
-              <a routerLink="/"><img src="assets/images/layout/logo-footer.webp" alt="Finex Logo"></a>
+              <a routerLink="/"><img ngSrc="assets/images/layout/logo-footer.webp" alt="Finex Logo" width="141" height="243" priority></a>
             </div>
             <p class="footer__tagline">Promoción inteligente de oportunidades para mejorar tu hogar.</p>
             <div class="footer__social">

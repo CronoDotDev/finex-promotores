@@ -1,10 +1,11 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
 
 import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-aliados',
-  imports: [],
+  imports: [NgOptimizedImage],
   template: `
     <section class="aliados" id="aliados">
       <div class="aliados__container">
@@ -22,7 +23,7 @@ import { gsap } from 'gsap';
             @for (logo of logos; track logo.name) {
               <div class="aliados__item">
                   <div class="aliados__item-inner">
-                      <img [src]="logo.src" [alt]="logo.name" [class]="logo.class">
+                      <img [ngSrc]="logo.src" [alt]="logo.name" [class]="logo.class" width="310" height="127">
                   </div>
               </div>
             }
@@ -30,7 +31,7 @@ import { gsap } from 'gsap';
             @for (logo of logos; track logo.name) {
               <div class="aliados__item">
                   <div class="aliados__item-inner">
-                      <img [src]="logo.src" [alt]="logo.name" [class]="logo.class">
+                      <img [ngSrc]="logo.src" [alt]="logo.name" [class]="logo.class" width="310" height="127">
                   </div>
               </div>
             }
