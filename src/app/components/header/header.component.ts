@@ -89,7 +89,7 @@ gsap.registerPlugin(ScrollTrigger);
     .header__button-contact::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: color-mix(in srgb, vars.$primary-red, black 10%); transition: width 0.3s; z-index: -1; }
     .header__button-contact:hover::before { width: 100%; }
     .header__nav--mobile { display: none; }
-    .header__nav--mobile-open { max-height: 100vh; opacity: 1; }
+    .header__nav--mobile.header__nav--mobile-open { max-height: 100vh; opacity: 1; pointer-events: auto; }
     .header__list--mobile { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 16px 0; list-style: none; margin: 0; }
     .header__link--mobile { display: block; padding: 16px 32px; font: 500 18px vars.$font-family-poppins; color: vars.$text-light; text-decoration: none; transition: background-color 0.2s; position: relative; }
     .header__link--mobile::after { display: none; }
@@ -98,7 +98,7 @@ gsap.registerPlugin(ScrollTrigger);
     .header__button-contact--mobile { display: block; width: calc(100% - 64px); margin: 16px 32px; padding: 14px 16px; font-size: 18px; text-align: center; border-radius: 8px; }
 
     @media (max-width: calc(vars.$breakpoint-lg - 1px)) {
-      .header__nav--mobile { display: block; position: fixed; top: 80px; left: 0; width: 100%; max-height: 0; overflow: hidden; background: linear-gradient(180deg, vars.$bg-gradient-end, vars.$bg-gradient-start); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3); opacity: 0; transition: max-height 0.4s cubic-bezier(0.645,0.045,0.355,1), opacity 0.3s; z-index: 999; }
+      .header__nav--mobile { display: block; position: fixed; top: 80px; left: 0; width: 100%; max-height: 0; overflow: hidden; background: linear-gradient(180deg, vars.$bg-gradient-end, vars.$bg-gradient-start); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3); opacity: 0; pointer-events: none; transition: max-height 0.4s cubic-bezier(0.645,0.045,0.355,1), opacity 0.3s; z-index: 999; }
       /* .header--scrolled .header__nav--mobile { top: 64px; } */
     }
     @media (max-width: calc(vars.$breakpoint-lg - 1px)) and (min-width: vars.$breakpoint-md) {
