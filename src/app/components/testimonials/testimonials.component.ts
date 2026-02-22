@@ -299,13 +299,15 @@ export class TestimonialsComponent {
 
   private initSlider(): void {
     const slider = this.sliderRef().nativeElement;
-    const totalWidth = slider.scrollWidth / 2;
+    requestAnimationFrame(() => {
+      const totalWidth = slider.scrollWidth / 2;
 
-    this.tween = gsap.to(slider, {
-      x: -totalWidth - 15.5, // totalWidth + half gap (31/2)
-      duration: 40,
-      ease: 'none',
-      repeat: -1
+      this.tween = gsap.to(slider, {
+        x: -totalWidth - 15.5, // totalWidth + half gap (31/2)
+        duration: 40,
+        ease: 'none',
+        repeat: -1
+      });
     });
   }
 

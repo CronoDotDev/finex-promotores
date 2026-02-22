@@ -179,12 +179,14 @@ export class AliadosComponent {
   private initSlider(): void {
     const slider = document.querySelector('.aliados__slider') as HTMLElement;
     if (slider) {
-      const width = slider.scrollWidth / 2;
-      this.tween = gsap.to(slider, {
-        x: -width - 37.5, // width + half gap
-        duration: 30,
-        ease: 'none',
-        repeat: -1
+      requestAnimationFrame(() => {
+        const width = slider.scrollWidth / 2;
+        this.tween = gsap.to(slider, {
+          x: -width - 37.5, // width + half gap
+          duration: 30,
+          ease: 'none',
+          repeat: -1
+        });
       });
     }
   }

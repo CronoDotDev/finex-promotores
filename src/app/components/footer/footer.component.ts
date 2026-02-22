@@ -296,10 +296,12 @@ export class FooterComponent {
     if (this.router.url === '/' || this.router.url.startsWith('/#')) {
       const target = document.getElementById(sectionId);
       if (!target) return;
-      const header = document.querySelector('.header') as HTMLElement;
-      const headerHeight = header ? header.offsetHeight : 0;
-      const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      requestAnimationFrame(() => {
+        const header = document.querySelector('.header') as HTMLElement;
+        const headerHeight = header ? header.offsetHeight : 0;
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      });
     } else {
       this.router.navigate(['/'], { fragment: sectionId });
     }

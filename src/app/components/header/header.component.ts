@@ -489,9 +489,11 @@ export class HeaderComponent {
     if (this.router.url === '/' || this.router.url.startsWith('/#')) {
       const target = document.getElementById(sectionId);
       if (!target) return;
-      const headerHeight = this.headerRef().nativeElement.offsetHeight;
-      const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      requestAnimationFrame(() => {
+        const headerHeight = this.headerRef().nativeElement.offsetHeight;
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      });
     } else {
       // If we are on another page (e.g. privacy or terms), navigate to home with the fragment
       this.router.navigate(['/'], { fragment: sectionId });
