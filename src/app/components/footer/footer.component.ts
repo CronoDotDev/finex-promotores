@@ -287,12 +287,12 @@ export class FooterComponent {
 
   constructor(private router: Router) {
     afterNextRender(() => {
-      const init = () => this.initSocialStagger();
-      if ('requestIdleCallback' in window) {
-        (window as any).requestIdleCallback(init);
-      } else {
-        setTimeout(init, 50);
-      }
+      // const init = () => this.initSocialStagger();
+      // if ('requestIdleCallback' in window) {
+      //   (window as any).requestIdleCallback(init);
+      // } else {
+      //   setTimeout(init, 50);
+      // }
     });
   }
 
@@ -312,6 +312,7 @@ export class FooterComponent {
     }
   }
 
+  /*
   private initSocialStagger(): void {
     const socialLinks = document.querySelectorAll('.footer__social-link');
     if (!socialLinks.length) return;
@@ -329,4 +330,5 @@ export class FooterComponent {
       }
     });
   }
+  */
 }
