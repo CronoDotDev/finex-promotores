@@ -43,5 +43,13 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-# Design files (too large for GitHub)
-Desktop.svg
+# Additional design files
+Footer.svg
+
+# Firebase
+.firebase/
+.firebaserc
+firebase-debug.log*
+firebase-debug.*.log
+hosting.*
+host.*
