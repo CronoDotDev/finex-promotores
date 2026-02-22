@@ -238,6 +238,7 @@ import { gsap } from 'gsap';
       aspect-ratio: 16 / 9;
       overflow: hidden;
       border-radius: 24px;
+      padding: 1rem;
 
       @media (min-width: vars.$breakpoint-sm) {
         aspect-ratio: 3 / 2;
@@ -260,12 +261,15 @@ import { gsap } from 'gsap';
 
     .hero__image {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      width: calc(100% - 2rem);
+      height: calc(100% - 2rem);
       object-fit: cover;
       object-position: center;
+      border-radius: 16px;
       opacity: 0;
       transition: opacity 1s ease-in-out;
 
