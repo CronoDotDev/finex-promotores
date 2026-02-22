@@ -39,6 +39,7 @@ import { gsap } from 'gsap';
 
           <div class="hero__actions">
             <button class="hero__button" (click)="scrollToContacto()">Únete a la Familia FINEX</button>
+            <button class="hero__button" (click)="scrollToContacto()">Solicita Información</button>
           </div>
         </div>
 
@@ -61,7 +62,7 @@ import { gsap } from 'gsap';
     .hero {
       padding: 140px 0 60px;
       min-height: 100vh;
-      background: #ffffff;
+      background: transparent;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -95,7 +96,7 @@ import { gsap } from 'gsap';
       @media (min-width: vars.$breakpoint-lg) {
         flex-direction: row;
         gap: 64px;
-        align-items: center;
+        align-items: flex-start;
       }
     }
 
@@ -139,7 +140,7 @@ import { gsap } from 'gsap';
       font-size: 28px;
       line-height: 1.2;
       color: vars.$text-dark;
-      text-align: center;
+      text-align: left;
 
       @media (min-width: vars.$breakpoint-md) {
         font-size: 38px;
@@ -159,7 +160,7 @@ import { gsap } from 'gsap';
       font-size: 16px;
       line-height: 1.5;
       color: vars.$text-dark;
-      text-align: center;
+      text-align: left;
       
       @media (min-width: vars.$breakpoint-md) {
         font-size: 18px;
@@ -195,7 +196,13 @@ import { gsap } from 'gsap';
     .hero__actions {
       margin-top: 10px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: flex-start;
+
+      @media (min-width: vars.$breakpoint-sm) {
+        flex-direction: row;
+      }
     }
 
     .hero__button {
@@ -234,44 +241,40 @@ import { gsap } from 'gsap';
     .hero__image-wrapper {
       position: relative;
       width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
+      max-width: 450px;
+      margin: 0 auto;
+      aspect-ratio: 4 / 5;
       border-radius: 24px;
-      padding: 1rem;
-
-      @media (min-width: vars.$breakpoint-sm) {
-        aspect-ratio: 3 / 2;
-      }
+      overflow: hidden;
 
       @media (min-width: vars.$breakpoint-md) {
-        aspect-ratio: 4 / 3;
-        max-height: 500px;
+        max-width: 600px;
+        aspect-ratio: 1 / 1;
       }
 
       @media (min-width: vars.$breakpoint-lg) {
+        max-width: 100%;
         aspect-ratio: 1.1 / 1;
-        max-height: 550px;
       }
 
       @media (min-width: vars.$breakpoint-tv) {
-        max-height: 700px;
+        aspect-ratio: 4 / 3.5;
+        max-width: 800px;
       }
     }
 
     .hero__image {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      right: 1rem;
-      bottom: 1rem;
-      width: calc(100% - 2rem);
-      height: calc(100% - 2rem);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
-      border-radius: 16px;
+      object-position: top center;
+      border-radius: 24px;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
 
       &--active {
         opacity: 1;
