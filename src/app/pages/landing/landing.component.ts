@@ -94,14 +94,16 @@ export class LandingPageComponent {
   }
 
   private initScrollAnimations(): void {
-    const revealSections = document.querySelectorAll('.reveal-section');
+    requestAnimationFrame(() => {
+      const revealSections = document.querySelectorAll('.reveal-section');
 
-    revealSections.forEach(section => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 85%',
-        onEnter: () => section.classList.add('reveal-section--visible'),
-        once: true
+      revealSections.forEach(section => {
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 85%',
+          onEnter: () => section.classList.add('reveal-section--visible'),
+          once: true
+        });
       });
     });
   }

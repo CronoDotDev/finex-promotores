@@ -1,11 +1,10 @@
-import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy, signal, afterNextRender } from '@angular/core';
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-hero',
-  imports: [NgOptimizedImage],
+  imports: [],
   template: `
     <section class="hero" id="hero">
       <div class="hero__container">
@@ -45,11 +44,16 @@ import { gsap } from 'gsap';
 
         <div class="hero__carousel">
           <div class="hero__image-wrapper">
-             @for (img of images; track img; let i = $index) {
-                <img [ngSrc]="img" 
+             @for (img of images; track img.original; let i = $index) {
+                <img [src]="img.original"
+                     [srcset]="img.srcset"
                      [class.hero__image--active]="activeImage() === i"
                      class="hero__image" 
-                     alt="Financia tu hogar" fill [priority]="i === 0" sizes="(max-width: 561px) 100vw, 50vw">
+                     alt="Financia tu hogar" 
+                     [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+                     [attr.fetchpriority]="i === 0 ? 'high' : 'auto'"
+                     decoding="async"
+                     sizes="(max-width: 561px) 450px, (max-width: 1024px) 800px, 50vw">
              }
           </div>
         </div>
@@ -287,16 +291,10 @@ export class HeroComponent {
   activeTitle = signal(0);
   activeImage = signal(0);
 
-  images = [
-    "assets/images/hero/imagen-hero-1.webp",
-    "assets/images/hero/imagen-hero-2.webp",
-    "assets/images/hero/imagen-hero-3.webp",
-    "assets/images/hero/imagen-hero-4.webp",
-    "assets/images/hero/imagen-hero-5.webp",
-    "assets/images/hero/imagen-hero-6.webp",
-    "assets/images/hero/imagen-hero-7.webp",
-    "assets/images/hero/imagen-hero-8.webp"
-  ];
+  images = Array.from({ length: 8 }, (_, i) => ({
+    original: `assets/images/hero/imagen-hero-${i + 1}.webp`,
+    srcset: `assets/images/hero/imagen-hero-${i + 1}-450w.webp 450w, assets/images/hero/imagen-hero-${i + 1}-800w.webp 800w`
+  }));
 
   constructor(private router: Router) {
     afterNextRender(() => {
