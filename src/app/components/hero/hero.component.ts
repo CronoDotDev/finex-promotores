@@ -234,14 +234,27 @@ import { gsap } from 'gsap';
     .hero__image-wrapper {
       position: relative;
       width: 100%;
-      height: 300px;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 24px;
+
+      @media (min-width: vars.$breakpoint-sm) {
+        aspect-ratio: 3 / 2;
+      }
 
       @media (min-width: vars.$breakpoint-md) {
-        height: 450px;
+        aspect-ratio: 4 / 3;
+        max-height: 500px;
+      }
+
+      @media (min-width: vars.$breakpoint-lg) {
+        aspect-ratio: 1.1 / 1;
+        max-height: 550px;
       }
 
       @media (min-width: vars.$breakpoint-tv) {
-        height: 573px;
+        max-height: 700px;
       }
     }
 
@@ -251,7 +264,8 @@ import { gsap } from 'gsap';
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
+      object-position: center;
       opacity: 0;
       transition: opacity 1s ease-in-out;
 
