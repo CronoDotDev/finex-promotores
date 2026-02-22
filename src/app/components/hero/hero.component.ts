@@ -139,6 +139,7 @@ import { gsap } from 'gsap';
       font-size: 28px;
       line-height: 1.2;
       color: vars.$text-dark;
+      text-align: center;
 
       @media (min-width: vars.$breakpoint-md) {
         font-size: 38px;
@@ -158,6 +159,7 @@ import { gsap } from 'gsap';
       font-size: 16px;
       line-height: 1.5;
       color: vars.$text-dark;
+      text-align: center;
       
       @media (min-width: vars.$breakpoint-md) {
         font-size: 18px;
@@ -192,6 +194,8 @@ import { gsap } from 'gsap';
 
     .hero__actions {
       margin-top: 10px;
+      display: flex;
+      justify-content: center;
     }
 
     .hero__button {
