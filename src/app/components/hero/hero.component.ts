@@ -47,7 +47,7 @@ import { gsap } from 'gsap';
                 <img [ngSrc]="img" 
                      [class.hero__image--active]="activeImage() === i"
                      class="hero__image" 
-                     alt="Financia tu hogar" fill [priority]="i === 0">
+                     alt="Financia tu hogar" fill [priority]="i === 0" sizes="(max-width: 561px) 100vw, 50vw">
              }
           </div>
         </div>

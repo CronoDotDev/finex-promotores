@@ -4,6 +4,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 
+import { IMAGE_CONFIG } from '@angular/common';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -11,6 +13,12 @@ export const appConfig: ApplicationConfig = {
       routes,
       withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' })
     ),
-    provideAnimations()
+    provideAnimations(),
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        breakpoints: [561, 768, 1024, 1366, 1920]
+      }
+    }
   ]
 };
