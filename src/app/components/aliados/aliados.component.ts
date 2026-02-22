@@ -172,7 +172,12 @@ export class AliadosComponent {
 
   constructor() {
     afterNextRender(() => {
-      this.initSlider();
+      const init = () => this.initSlider();
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(init);
+      } else {
+        setTimeout(init, 50);
+      }
     });
   }
 

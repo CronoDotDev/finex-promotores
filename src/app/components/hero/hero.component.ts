@@ -278,7 +278,12 @@ export class HeroComponent {
 
   constructor() {
     afterNextRender(() => {
-      this.startIntervals();
+      const init = () => this.startIntervals();
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(init);
+      } else {
+        setTimeout(init, 50);
+      }
     });
   }
 

@@ -16,7 +16,12 @@ export class RevealDirective {
 
     constructor() {
         afterNextRender(() => {
-            this.initAnimation();
+            const init = () => this.initAnimation();
+            if ('requestIdleCallback' in window) {
+                (window as any).requestIdleCallback(init);
+            } else {
+                setTimeout(init, 50);
+            }
         });
     }
 

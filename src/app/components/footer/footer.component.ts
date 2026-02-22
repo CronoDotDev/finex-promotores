@@ -287,7 +287,12 @@ export class FooterComponent {
 
   constructor(private router: Router) {
     afterNextRender(() => {
-      this.initSocialStagger();
+      const init = () => this.initSocialStagger();
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(init);
+      } else {
+        setTimeout(init, 50);
+      }
     });
   }
 

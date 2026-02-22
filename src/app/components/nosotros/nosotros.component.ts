@@ -389,7 +389,12 @@ gsap.registerPlugin(ScrollTrigger);
 export class NosotrosComponent {
   constructor() {
     afterNextRender(() => {
-      this.initIconStagger();
+      const init = () => this.initIconStagger();
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(init);
+      } else {
+        setTimeout(init, 50);
+      }
     });
   }
 

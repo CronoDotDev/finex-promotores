@@ -314,7 +314,12 @@ export class ServicesComponent {
 
   constructor() {
     afterNextRender(() => {
-      this.initStaggerAnimation();
+      const init = () => this.initStaggerAnimation();
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(init);
+      } else {
+        setTimeout(init, 50);
+      }
     });
   }
 

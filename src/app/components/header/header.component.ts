@@ -444,7 +444,12 @@ export class HeaderComponent {
 
   constructor(private router: Router) {
     afterNextRender(() => {
-      this.initAnimations();
+      const init = () => this.initAnimations();
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(init);
+      } else {
+        setTimeout(init, 50);
+      }
     });
   }
 

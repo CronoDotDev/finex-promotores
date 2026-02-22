@@ -278,7 +278,12 @@ export class BeneficiosComponent {
 
   constructor() {
     afterNextRender(() => {
-      this.initAnimations();
+      const init = () => this.initAnimations();
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(init);
+      } else {
+        setTimeout(init, 50);
+      }
     });
   }
 
