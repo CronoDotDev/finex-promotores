@@ -59,7 +59,7 @@ import { gsap } from 'gsap';
     @use '../../../styles/variables' as vars;
 
     .hero {
-      padding: 120px 0 60px;
+      padding: 140px 0 60px;
       min-height: 100vh;
       background: #ffffff;
       display: flex;
@@ -67,19 +67,19 @@ import { gsap } from 'gsap';
       overflow: hidden;
 
       @media (min-width: vars.$breakpoint-md) {
-        padding: 130px 0 60px;
+        padding: 160px 0 60px;
       }
 
       @media (min-width: vars.$breakpoint-lg) {
-        padding: 120px 0 60px;
+        padding: 180px 0 60px;
       }
 
       @media (min-width: 1350px) {
-        padding: 12.8125rem 0 60px;
+        padding: 15.8rem 0 60px;
       }
 
       @media (min-width: vars.$breakpoint-tv) {
-        padding: 200px 0 80px;
+        padding: 240px 0 80px;
       }
     }
 
@@ -88,7 +88,7 @@ import { gsap } from 'gsap';
       width: 100%;
       margin: 0 auto;
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       gap: 40px;
       @include vars.container-padding(360px);
 
@@ -103,45 +103,32 @@ import { gsap } from 'gsap';
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
       max-width: 100%;
 
       @media (min-width: vars.$breakpoint-lg) {
+        gap: 24px;
         flex: 0 0 50%;
         max-width: 585px;
       }
     }
 
     .hero__headings-container {
-      position: relative;
-      min-height: 180px;
+      display: grid;
       width: 100%;
-
-      @media (min-width: vars.$breakpoint-md) {
-        min-height: 160px;
-      }
-
-      @media (min-width: vars.$breakpoint-lg) {
-        min-height: 220px;
-      }
-
-      @media (min-width: vars.$breakpoint-tv) {
-        min-height: 300px;
-      }
     }
 
     .hero__title-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+      grid-area: 1 / 1;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s ease;
+      pointer-events: none;
 
       &--active {
         opacity: 1;
         transform: translateY(0);
+        pointer-events: auto;
       }
     }
 
@@ -157,8 +144,12 @@ import { gsap } from 'gsap';
         font-size: 38px;
       }
 
+      @media (min-width: vars.$breakpoint-lg) {
+        font-size: 44px;
+      }
+
       @media (min-width: vars.$breakpoint-tv) {
-        font-size: 48px;
+        font-size: 56px;
       }
     }
 
@@ -171,6 +162,11 @@ import { gsap } from 'gsap';
       @media (min-width: vars.$breakpoint-md) {
         font-size: 18px;
         line-height: 27.6px;
+      }
+
+      @media (min-width: vars.$breakpoint-lg) {
+        font-size: 20px;
+        line-height: 1.6;
       }
     }
 
