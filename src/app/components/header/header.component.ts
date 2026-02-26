@@ -70,7 +70,7 @@ gsap.registerPlugin(ScrollTrigger);
 
     .header {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; height: 80px; overflow: visible; display: flex;
-      background: linear-gradient(90deg, vars.$bg-gradient-start, vars.$bg-gradient-end); box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25); transition: height 0.3s;
+      background: vars.$primary-red; box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25); transition: height 0.3s;
       /* &--scrolled { height: 64px; } */
     }
     .header__container { width: 100%; height: 100%; max-width: 1920px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; position: relative; }
@@ -83,10 +83,10 @@ gsap.registerPlugin(ScrollTrigger);
     .header__nav--desktop { display: none; }
     .header__list { display: flex; align-items: center; gap: 32px; list-style: none; padding: 0; margin: 0; }
     .header__link { font: 500 18px/29.25px vars.$font-family-poppins; color: vars.$text-light; text-decoration: none; transition: opacity 0.3s; position: relative; }
-    .header__link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: vars.$primary-red; transition: width 0.3s; }
+    .header__link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: vars.$text-light; transition: width 0.3s; }
     .header__link:hover { opacity: 0.8; &::after { width: 100%; } }
-    .header__button-contact { background: vars.$primary-red; color: vars.$text-light; font: 500 18px/21.6px vars.$font-family-poppins; letter-spacing: 0.54px; padding: 8px 16px; border: none; border-radius: 8px; box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.25); cursor: pointer; overflow: hidden; position: relative; z-index: 1; }
-    .header__button-contact::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: color-mix(in srgb, vars.$primary-red, black 10%); transition: width 0.3s; z-index: -1; }
+    .header__button-contact { background: #606060; color: vars.$text-light; font: 500 18px/21.6px vars.$font-family-poppins; letter-spacing: 0.54px; padding: 8px 16px; border: none; border-radius: 8px; box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.25); cursor: pointer; overflow: hidden; position: relative; z-index: 1; }
+    .header__button-contact::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: color-mix(in srgb, #606060, black 10%); transition: width 0.3s; z-index: -1; }
     .header__button-contact:hover::before { width: 100%; }
     .header__nav--mobile { display: none; }
     .header__nav--mobile.header__nav--mobile-open { max-height: 100vh; opacity: 1; pointer-events: auto; }
@@ -94,11 +94,11 @@ gsap.registerPlugin(ScrollTrigger);
     .header__link--mobile { display: block; padding: 16px 32px; font: 500 18px vars.$font-family-poppins; color: vars.$text-light; text-decoration: none; transition: background-color 0.2s; position: relative; }
     .header__link--mobile::after { display: none; }
     .header__link--mobile:hover { background: rgba(255,255,255,0.08); opacity: 1; }
-    .header__link--mobile:focus-visible { outline: 2px solid vars.$primary-red; outline-offset: -2px; }
+    .header__link--mobile:focus-visible { outline: 2px solid vars.$text-light; outline-offset: -2px; }
     .header__button-contact--mobile { display: block; width: calc(100% - 64px); margin: 16px 32px; padding: 14px 16px; font-size: 18px; text-align: center; border-radius: 8px; }
 
     @media (max-width: calc(vars.$breakpoint-lg - 1px)) {
-      .header__nav--mobile { display: block; position: fixed; top: 80px; left: 0; width: 100%; max-height: 0; overflow: hidden; background: linear-gradient(180deg, vars.$bg-gradient-end, vars.$bg-gradient-start); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3); opacity: 0; pointer-events: none; transition: max-height 0.4s cubic-bezier(0.645,0.045,0.355,1), opacity 0.3s; z-index: 999; }
+      .header__nav--mobile { display: block; position: fixed; top: 80px; left: 0; width: 100%; max-height: 0; overflow: hidden; background: vars.$primary-red; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3); opacity: 0; pointer-events: none; transition: max-height 0.4s cubic-bezier(0.645,0.045,0.355,1), opacity 0.3s; z-index: 999; }
       /* .header--scrolled .header__nav--mobile { top: 64px; } */
     }
     @media (max-width: calc(vars.$breakpoint-lg - 1px)) and (min-width: vars.$breakpoint-md) {
