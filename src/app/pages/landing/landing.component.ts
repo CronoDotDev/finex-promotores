@@ -1,6 +1,4 @@
 import { Component, ChangeDetectionStrategy, afterNextRender } from '@angular/core';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { HeroComponent } from '../../components/hero/hero.component';
@@ -12,8 +10,6 @@ import { CtaComponent } from '../../components/cta/cta.component';
 import { TestimonialsComponent } from '../../components/testimonials/testimonials.component';
 import { ContactoComponent } from '../../components/contacto/contacto.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-
-gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-landing-page',
@@ -129,13 +125,21 @@ export class LandingPageComponent {
     requestAnimationFrame(() => {
       const revealSections = document.querySelectorAll('.reveal-section');
 
-      revealSections.forEach(section => {
-        ScrollTrigger.create({
-          trigger: section,
-          start: 'top 85%',
-          onEnter: () => section.classList.add('reveal-section--visible'),
-          once: true
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-section--visible');
+            obs.unobserve(entry.target);
+          }
         });
+      }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      });
+
+      revealSections.forEach(section => {
+        observer.observe(section);
       });
     });
   }

@@ -1,10 +1,6 @@
 import { NgOptimizedImage } from "@angular/common";
-import { Component, ChangeDetectionStrategy, signal, ElementRef, viewChild, afterNextRender } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, ElementRef, viewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-header',
@@ -68,9 +64,21 @@ gsap.registerPlugin(ScrollTrigger);
   styles: [`
     @use '../../../styles/variables' as vars;
 
+    @keyframes headerEntrance {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .header {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; height: 80px; overflow: visible; display: flex;
       background: vars.$primary-red; box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25); transition: height 0.3s;
+      animation: headerEntrance 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
       /* &--scrolled { height: 64px; } */
     }
     .header__container { width: 100%; height: 100%; max-width: 1920px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; position: relative; }
@@ -140,14 +148,6 @@ export class HeaderComponent {
   ];
 
   constructor(private router: Router) {
-    afterNextRender(() => {
-      const init = () => this.initAnimations();
-      if ('requestIdleCallback' in window) {
-        (window as any).requestIdleCallback(init);
-      } else {
-        setTimeout(init, 50);
-      }
-    });
   }
 
   toggleMenu() {
@@ -156,34 +156,6 @@ export class HeaderComponent {
 
   closeMenu() {
     this.mobileMenuOpen.set(false);
-  }
-
-  private initAnimations() {
-    const header = this.headerRef().nativeElement;
-
-    // Initial Entrance Animation
-    gsap.from(header, {
-      y: -100,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    });
-
-    // Scroll Animation (Sticky Header) - Commented out as per client request
-    /*
-    ScrollTrigger.create({
-      start: 'top top',
-      end: 99999,
-      onUpdate: (self) => {
-        const isScrolled = self.scroll() > 50;
-        if (isScrolled) {
-          header.classList.add('header--scrolled');
-        } else {
-          header.classList.remove('header--scrolled');
-        }
-      }
-    });
-    */
   }
 
   scrollTo(event: Event, sectionId: string): void {

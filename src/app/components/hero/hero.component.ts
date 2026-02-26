@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy, signal, afterNextRender } from '@angular/core';
 import { Router } from '@angular/router';
-import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-hero',
