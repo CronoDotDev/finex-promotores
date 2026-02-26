@@ -36,36 +36,68 @@ gsap.registerPlugin(ScrollTrigger);
       <main>
         <app-hero></app-hero>
 
-        <div class="reveal-section">
-          <app-nosotros></app-nosotros>
+        <div class="reveal-section" id="nosotros">
+          @defer (on viewport) {
+            <app-nosotros></app-nosotros>
+          } @placeholder {
+            <div style="min-height: 400px"></div>
+          }
+        </div>
+
+        <div class="reveal-section" id="aliados">
+          @defer (on viewport) {
+            <app-aliados></app-aliados>
+          } @placeholder {
+            <div style="min-height: 400px"></div>
+          }
+        </div>
+
+        <div class="reveal-section" id="servicios">
+          @defer (on viewport) {
+            <app-services></app-services>
+          } @placeholder {
+            <div style="min-height: 400px"></div>
+          }
+        </div>
+
+        <div class="reveal-section" id="beneficios">
+          @defer (on viewport) {
+            <app-beneficios></app-beneficios>
+          } @placeholder {
+            <div style="min-height: 400px"></div>
+          }
         </div>
 
         <div class="reveal-section">
-          <app-aliados></app-aliados>
+          @defer (on viewport) {
+            <app-cta></app-cta>
+          } @placeholder {
+            <div style="min-height: 300px"></div>
+          }
         </div>
 
-        <div class="reveal-section">
-          <app-services></app-services>
+        <div class="reveal-section" id="testimonios">
+          @defer (on viewport) {
+            <app-testimonials></app-testimonials>
+          } @placeholder {
+            <div style="min-height: 400px"></div>
+          }
         </div>
 
-        <div class="reveal-section">
-          <app-beneficios></app-beneficios>
-        </div>
-
-        <div class="reveal-section">
-          <app-cta></app-cta>
-        </div>
-
-        <div class="reveal-section">
-          <app-testimonials></app-testimonials>
-        </div>
-
-        <div class="reveal-section">
-          <app-contacto></app-contacto>
+        <div class="reveal-section" id="contacto">
+          @defer (on viewport) {
+            <app-contacto></app-contacto>
+          } @placeholder {
+            <div style="min-height: 600px"></div>
+          }
         </div>
       </main>
 
-      <app-footer></app-footer>
+      @defer (on viewport) {
+        <app-footer></app-footer>
+      } @placeholder {
+        <div style="min-height: 300px"></div>
+      }
     </div>
   `,
   styles: [`

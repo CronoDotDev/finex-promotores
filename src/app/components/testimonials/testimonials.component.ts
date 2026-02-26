@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
   selector: 'app-testimonials',
   imports: [NgOptimizedImage],
   template: `
-    <section class="testimonials" id="testimonios">
+    <section class="testimonials">
       <div class="testimonials__container">
         <div class="testimonials__header">
           <h2 class="testimonials__title">Testimonios</h2>

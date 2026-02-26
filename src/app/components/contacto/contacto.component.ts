@@ -6,7 +6,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
   selector: 'app-contacto',
   imports: [RevealDirective, NgOptimizedImage],
   template: `
-    <section class="contacto" id="contacto">
+    <section class="contacto">
       <div class="contacto__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
       <div class="contacto__overlay"></div>
 

@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
   selector: 'app-aliados',
   imports: [NgOptimizedImage],
   template: `
-    <section class="aliados" id="aliados">
+    <section class="aliados">
       <div class="aliados__container">
         <p class="aliados__description">
           Trabajamos con instituciones y marcas reconocidas para ofrecerte mejores oportunidades

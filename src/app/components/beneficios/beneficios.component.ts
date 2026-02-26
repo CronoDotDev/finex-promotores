@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
   selector: 'app-beneficios',
   imports: [RevealDirective, NgOptimizedImage],
   template: `
-    <section class="beneficios" id="beneficios">
+    <section class="beneficios">
       <div class="beneficios__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
       <div class="beneficios__overlay"></div>
       

@@ -16,7 +16,7 @@ export interface ServiceItem {
   selector: 'app-services',
   imports: [NgOptimizedImage],
   template: `
-    <section class="services" id="servicios">
+    <section class="services">
       <div class="services__decoration-wrapper services__decoration-wrapper--left">
         <div class="services__decoration services__decoration--left"></div>
       </div>

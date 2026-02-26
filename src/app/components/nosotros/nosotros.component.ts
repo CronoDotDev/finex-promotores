@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
   selector: 'app-nosotros',
   imports: [RevealDirective, NgOptimizedImage],
   template: `
-    <section class="nosotros" id="nosotros">
+    <section class="nosotros">
       <div class="nosotros__decoration-wrapper nosotros__decoration-wrapper--top-left">
         <div class="nosotros__decoration nosotros__decoration--top-left"></div>
       </div>
