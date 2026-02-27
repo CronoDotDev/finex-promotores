@@ -1,6 +1,6 @@
 {
     "hosting": {
-        "site": "finex-landingpage",
+        "site": "finexpromotores",
         "public": "dist/finex-promotores/browser",
         "ignore": [
             "firebase.json",

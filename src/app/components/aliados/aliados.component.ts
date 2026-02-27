@@ -160,7 +160,7 @@ import { gsap } from 'gsap';
 export class AliadosComponent {
   logos = [
     { name: 'Infonavit', src: 'assets/images/alliances/alliance-logo-infonavit.webp', class: 'logo-infonavit' },
-    { name: 'Mejoravit', src: 'assets/images/alliances/alliance-logo-mejoravit.webp', class: 'logo-mejoravit' },
+    { name: 'Logo', src: 'assets/images/alliances/alliance-logo.webp', class: 'logo' },
     { name: 'Yayahappy', src: 'assets/images/alliances/alliance-logo-yayahappyshopping.webp', class: 'logo-yaya' },
     { name: 'CFE', src: 'assets/images/alliances/alliance-logo-cfe.webp', class: 'logo-cfe' }
   ];

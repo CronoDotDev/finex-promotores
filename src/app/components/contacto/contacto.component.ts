@@ -1,10 +1,11 @@
 import { NgOptimizedImage } from "@angular/common";
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { HubspotFormComponent } from './form.component';
 
 @Component({
   selector: 'app-contacto',
-  imports: [RevealDirective, NgOptimizedImage],
+  imports: [RevealDirective, NgOptimizedImage, HubspotFormComponent],
   template: `
     <section class="contacto">
       <div class="contacto__background" [style.background-image]="'url(' + backgroundImage + ')'"></div>
@@ -40,10 +41,8 @@ import { RevealDirective } from '../../directives/reveal.directive';
 
         <div class="contacto__form-wrapper">
           <div class="contacto__form-container">
-            <div class="contacto__form-placeholder">
-              <div class="hubspot-placeholder">
-                  <p>Formulario Hubspot</p>
-              </div>
+            <div class="contacto__form-inner">
+              <app-hubspot-form></app-hubspot-form>
             </div>
 
             <div class="contacto__privacy">
@@ -266,34 +265,20 @@ import { RevealDirective } from '../../directives/reveal.directive';
         width: 100%;
     }
 
-    .contacto__form-placeholder {
-      background: #d9d9d9;
+    .contacto__form-inner {
+      background: white;
       width: 100%;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 30px 20px;
 
       @media (min-width: vars.$breakpoint-md) {
-        height: 660px;
+        min-height: 660px;
+        padding: 40px;
       }
     }
 
-    .hubspot-placeholder {
-       transform: rotate(-18.59deg);
-       text-align: center;
-       p {
-         font-family: vars.$font-family-roboto;
-         font-weight: 600;
-         font-size: 28px;
-         color: white;
-         margin: 0;
-
-         @media (min-width: vars.$breakpoint-md) {
-             font-size: 48px;
-         }
-       }
-    }
 
     .contacto__privacy {
       border: 2px solid vars.$primary-red;
