@@ -23,7 +23,7 @@ import { gsap } from 'gsap';
             @for (testimonial of testimonials; track testimonial.name) {
               <div class="testimonial-card">
                 <div class="testimonial-card__quote-icon">
-                  <img ngSrc="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote" width="78" height="78">
+                  <img ngSrc="assets/images/testimonials/quotes.svg" alt="quote" width="78" height="78">
                 </div>
                 <div class="testimonial-card__content">
                   <p class="testimonial-card__text">{{ testimonial.text }}</p>
@@ -43,7 +43,7 @@ import { gsap } from 'gsap';
             @for (testimonial of testimonials; track testimonial.name) {
               <div class="testimonial-card">
                 <div class="testimonial-card__quote-icon">
-                  <img ngSrc="https://www.figma.com/api/mcp/asset/9d69361b-f633-4acb-8066-2c9a47e7b2fe" alt="quote" width="78" height="78">
+                  <img ngSrc="assets/images/testimonials/quotes.svg" alt="quote" width="78" height="78">
                 </div>
                 <div class="testimonial-card__content">
                   <p class="testimonial-card__text">{{ testimonial.text }}</p>

@@ -57,25 +57,25 @@ gsap.registerPlugin(ScrollTrigger);
             <div class="nosotros__objetivos-grid">
               <div class="objetivo-card">
                 <div class="objetivo-card__icon">
-                    <img src="https://www.figma.com/api/mcp/asset/ade6a594-7433-4c70-add7-b4aea75e2c83" alt="Diversificar">
+                    <img src="assets/images/about/diversificar.svg" alt="Diversificar">
                 </div>
                 <p>Diversificar y fortalecer nuestra oferta de oportunidades de productos tanto financieros como físicos.</p>
               </div>
               <div class="objetivo-card">
                 <div class="objetivo-card__icon">
-                    <img src="https://www.figma.com/api/mcp/asset/5bd36b8e-ac5b-4e12-bcc1-741735742e0a" alt="Alianzas">
+                    <img src="assets/images/about/alliance.svg" alt="Alianzas">
                 </div>
                 <p>Desarrollar y consolidar alianzas estratégicas con instituciones y socios clave.</p>
               </div>
               <div class="objetivo-card">
                 <div class="objetivo-card__icon">
-                    <img src="https://www.figma.com/api/mcp/asset/e03a7715-efee-4df7-8f6d-5672a37b5bca" alt="Accesible">
+                    <img src="assets/images/about/accesible.svg" alt="Accesible">
                 </div>
                 <p>Brindar una experiencia clara, accesible y transparente en cada etapa del proceso.</p>
               </div>
               <div class="objetivo-card">
                 <div class="objetivo-card__icon">
-                    <img src="https://www.figma.com/api/mcp/asset/1ed8db73-1e21-4946-aa41-2463bffc22d8" alt="Crecimiento">
+                    <img src="assets/images/about/Impulsar.svg" alt="Crecimiento">
                 </div>
                 <p>Impulsar el crecimiento sostenido de la empresa mediante la expansión y la mejora continua.</p>
               </div>

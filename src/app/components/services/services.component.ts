@@ -292,22 +292,22 @@ export interface ServiceItem {
 export class ServicesComponent {
   services: ServiceItem[] = [
     {
-      icon: 'https://www.figma.com/api/mcp/asset/cde3ed88-d157-4cb5-8d67-3ad2eb72eb86',
+      icon: 'assets/images/services/analisis.svg',
       title: 'Análisis y promoción de créditos',
       description: '<p>Evaluamos distintas alternativas de financiamiento como:</p><ul><li>Créditos para vivienda</li><li>Créditos personales</li><li>Opciones complementarias</li></ul><p>Buscamos que el crédito sea una herramienta de mejora, no una carga.</p>'
     },
     {
-      icon: 'https://www.figma.com/api/mcp/asset/52a3b625-7a9e-4542-9876-cbd4287658ff',
+      icon: 'assets/images/services/oportunidades.svg',
       title: 'Oportunidades para adquirir productos del hogar',
       description: '<p>Te orientamos en alternativas para adquirir:</p><ul><li>Electrodomésticos</li><li>Equipamiento del hogar</li><li>Tecnología y electrónica</li><li>Refacciones y materiales</li></ul><p>Revisamos condiciones y confiabilidad antes de recomendarlas.</p>'
     },
     {
-      icon: 'https://www.figma.com/api/mcp/asset/3e1109fb-ac9c-4857-aa01-0c438c78d01c',
+      icon: 'assets/images/services/intermedicaion.svg',
       title: 'Intermediación financiera',
       description: '<p>Actuamos como intermediarios entre tú y las instituciones financieras, facilitando la comunicación, los trámites y la correcta integración de tu expediente.</p>'
     },
     {
-      icon: 'https://www.figma.com/api/mcp/asset/f1f0c3df-2731-476f-b30f-1f89a2592b01',
+      icon: 'assets/images/services/capacitacion.svg',
       title: 'Capacitación y orientación financiera:',
       description: '<p>Ofrecemos capacitación y acompañamiento en temas financieros para que comprendas mejor tus opciones y tomes decisiones con mayor claridad y seguridad.</p>'
     }
