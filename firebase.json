@@ -20,6 +20,14 @@
         ],
         "rewrites": [
             {
+                "source": "/sorteos",
+                "function": "sorteos"
+            },
+            {
+                "source": "/sorteos/**",
+                "function": "sorteos"
+            },
+            {
                 "source": "**",
                 "destination": "/index.html"
             }
